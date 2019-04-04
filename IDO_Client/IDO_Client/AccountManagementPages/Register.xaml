@@ -10,9 +10,6 @@
             <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" Padding="24" Spacing="0">
                     <StackLayout VerticalOptions="CenterAndExpand">
-                        <!--<Label x:Name="WelcomeLabel" Text="WELCOME" FontSize="Medium" FontAttributes="Bold"  TextColor="#3897F0" />-->
-                        <!--<Label x:Name="PosyLabel" Text="POSY" FontSize="48" FontFamily="{StaticResource font_heavy}" TextColor="#ffffff" />-->
-                        <!-- Place new controls here -->
                         <Image Source="startpageimage.png" HeightRequest="115" VerticalOptions="End" Margin="0,0,0,25" />
                         <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
 

@@ -217,12 +217,13 @@ C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\startpageimage.png
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\splash.png
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\splash_drawable.xml
-C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\machine.config
-C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\System.Runtime.dll
-C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\stamp\_CompileToDalvik.stamp
-C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\account.png
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\feed.png
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\follows.png
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\idid.png
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\settings.png
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\bin\Debug\Xamarin.Forms.HotReload.Reloader.pdb
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\machine.config
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\stamp\_CompileToDalvik.stamp
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\exit.png

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IDO_Client.Tabs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,6 +17,11 @@ namespace IDO_Client
         public MainPage()
         {
             InitializeComponent();
+            this.Children.Add(new Follows());
+            this.Children.Add(new Feed());
+            this.Children.Add(new Idid());
+            this.Children.Add(new Home());
+            this.Children.Add(new Settings());
         }
     }
 }

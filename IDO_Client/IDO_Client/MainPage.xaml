@@ -9,9 +9,4 @@
              android:TabbedPage.BarItemColor="Black"
              android:TabbedPage.BarSelectedItemColor="Black">
     
-    <ContentPage Title="Follows" Icon="follows.png" />
-    <ContentPage Title="Feed" Icon="feed.png"/>
-    <ContentPage Title="I DID ..." Icon="idid.png" />
-    <ContentPage Title="Home" Icon="account.png" />
-    <ContentPage Title="Settings" Icon="settings.png" />
 </TabbedPage>
