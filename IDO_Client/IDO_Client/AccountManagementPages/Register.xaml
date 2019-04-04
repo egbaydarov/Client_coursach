@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDO_Client.AccountManagementPages.Register"
+             BackgroundColor="White"
+             
+             >
+    <ContentPage.Content>
+        <Grid x:Name="MainGrid">
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" Padding="24" Spacing="0">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <!--<Label x:Name="WelcomeLabel" Text="WELCOME" FontSize="Medium" FontAttributes="Bold"  TextColor="#3897F0" />-->
+                        <!--<Label x:Name="PosyLabel" Text="POSY" FontSize="48" FontFamily="{StaticResource font_heavy}" TextColor="#ffffff" />-->
+                        <!-- Place new controls here -->
+                        <Image Source="startpageimage.png" HeightRequest="115" VerticalOptions="End" Margin="0,0,0,25" />
+                        <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
+
+                            <StackLayout Spacing="8">
+                                <Label Text="NICKNAME"  FontSize="12" />
+                                <Entry Text=""  />
+                            </StackLayout>
+                            <StackLayout Spacing="8">
+                                <Label Text="PASSWORD"  FontSize="12" />
+                                <Entry   />
+                            </StackLayout>
+                            <StackLayout Spacing="8">
+                                <Label Text="PASSWORD AGAIN"   FontSize="12" />
+                                <Entry  />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <Button x:Name="RegisterButton" Clicked="Register_Clicked" TextColor="Black" BorderColor="#000000" VerticalOptions="EndAndExpand" Text="Create Account" Margin="16" CornerRadius="26" BorderWidth="2" BackgroundColor="White"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

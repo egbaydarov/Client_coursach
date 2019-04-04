@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XamlProjectMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Files>
+    <XamlFileMeta>
+      <FilePath>C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client\AccountManagementPages\Login.xaml</FilePath>
+      <Hash>9A-44-7E-6B-19-A4-C3-EA-97-98-42-D5-B3-78-E1-D7</Hash>
+      <Properties>
+        <string>NavigationPage.HasNavigationBar</string>
+      </Properties>
+    </XamlFileMeta>
+    <XamlFileMeta>
+      <FilePath>C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client\AccountManagementPages\Register.xaml</FilePath>
+      <Hash>86-5C-47-F0-ED-9B-82-E1-BD-3A-4B-28-F7-5E-83-D8</Hash>
+      <Properties />
+    </XamlFileMeta>
+    <XamlFileMeta>
+      <FilePath>C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client\App.xaml</FilePath>
+      <Hash>C6-87-59-5E-F2-FE-FB-96-89-1E-B1-3F-8D-BC-35-21</Hash>
+      <Properties />
+    </XamlFileMeta>
+    <XamlFileMeta>
+      <FilePath>C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client\MainPage.xaml</FilePath>
+      <Hash>2B-4D-2F-C0-CF-27-13-60-6D-1B-9F-B0-F4-22-C8-84</Hash>
+      <Properties />
+    </XamlFileMeta>
+  </Files>
+</XamlProjectMeta>
