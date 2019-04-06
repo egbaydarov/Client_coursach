@@ -12,6 +12,12 @@ namespace IDO_Client.Tabs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Feed : ContentPage
     {
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Idid.IsCameraShowed = false;
+        }
         public Feed()
         {
             InitializeComponent();

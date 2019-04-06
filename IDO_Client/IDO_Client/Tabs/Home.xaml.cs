@@ -12,6 +12,11 @@ namespace IDO_Client.Tabs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Home : ContentPage
     {
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Idid.IsCameraShowed = false;
+        }
         public Home()
         {
             InitializeComponent();

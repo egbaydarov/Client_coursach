@@ -17,7 +17,12 @@ namespace IDO_Client.Tabs
         {
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
+            Idid.IsCameraShowed = false;
+        }
         private void LogOut_clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new CustomNavigationPage(new Login());

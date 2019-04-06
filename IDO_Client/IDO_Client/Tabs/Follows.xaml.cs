@@ -12,6 +12,12 @@ namespace IDO_Client.Tabs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Follows : ContentPage
     {
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Idid.IsCameraShowed = false;
+        }
         public Follows()
         {
             InitializeComponent();

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maste\\Documents\\ШАРАГА\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj": {}
+    "C:\\Users\\maste\\Documents\\SHARAGA\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maste\\Documents\\ШАРАГА\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj": {
+    "C:\\Users\\maste\\Documents\\SHARAGA\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maste\\Documents\\ШАРАГА\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj",
+        "projectUniqueName": "C:\\Users\\maste\\Documents\\SHARAGA\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj",
         "projectName": "IDO_Client",
-        "projectPath": "C:\\Users\\maste\\Documents\\ШАРАГА\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj",
+        "projectPath": "C:\\Users\\maste\\Documents\\SHARAGA\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\IDO_Client.csproj",
         "packagesPath": "C:\\Users\\maste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maste\\Documents\\ШАРАГА\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\obj\\",
+        "outputPath": "C:\\Users\\maste\\Documents\\SHARAGA\\Solutions\\IDO_Client\\IDO_Client\\IDO_Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\ProgramData\\Xamarin\\NuGet\\",
@@ -52,6 +52,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "Xam.Plugin.Media": {
+              "target": "Package",
+              "version": "[4.0.1.5, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
