@@ -113,6 +113,7 @@ class MonoPackageManager_Resources {
 		"IDO_Client.Android.dll",
 		"FormsViewGroup.dll",
 		"IDO_Client.dll",
+		"Newtonsoft.Json.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Runtime.dll",

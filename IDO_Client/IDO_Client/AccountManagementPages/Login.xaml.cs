@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,9 +19,22 @@ namespace IDO_Client.AccountManagementPages
             InitializeComponent();
         }
 
-        private void Login_Clicked(object sender, EventArgs e)
+        private async void Login_Clicked(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (await App.TryLogin(UsernameEntry.Text, PasswordEntry.Text))
+                {
+                    App.Current.MainPage = new MainPage();
+                }
+                else
+                    throw
+                        new ApplicationException("Sorry!, Wrong Nickname or Password");
+            }
+            catch(Exception ex)
+            {
+                DependencyService.Get<IMessage>().ShortAlert(ex.Message);
+            }
         }
 
         private async void Register_Clicked(object sender, EventArgs e)
@@ -27,5 +42,6 @@ namespace IDO_Client.AccountManagementPages
             await Navigation.PushAsync(new Register(),true);
         }
 
+        
     }
 }

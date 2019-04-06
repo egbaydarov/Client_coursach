@@ -15,15 +15,15 @@
 
                             <StackLayout Spacing="8">
                                 <Label Text="NICKNAME"  FontSize="12" />
-                                <Entry Text=""  />
+                                <Entry Text=""  x:Name="Nick"  TextChanged="OnIncorrectLogin" MaxLength="16"/>
                             </StackLayout>
                             <StackLayout Spacing="8">
                                 <Label Text="PASSWORD"  FontSize="12" />
-                                <Entry   />
+                                <Entry   x:Name="PassFirst" IsTextPredictionEnabled="False" TextChanged="OnIncorrectPass" MaxLength="25" IsPassword="True"/>
                             </StackLayout>
                             <StackLayout Spacing="8">
                                 <Label Text="PASSWORD AGAIN"   FontSize="12" />
-                                <Entry  />
+                                <Entry x:Name="PassSecond" IsTextPredictionEnabled="False" TextChanged="OnIncorrectPassAgain" MaxLength="25" IsPassword="True"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>

@@ -4,7 +4,7 @@
              x:Class="IDO_Client.Tabs.Settings"
              xmlns:renderers="clr-namespace:ConferenceVision.Views.Renderers"
              Title="Setting" Icon="settings.png"
-             BackgroundColor="White">
+             BackgroundColor="LightSkyBlue">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
@@ -15,18 +15,29 @@
                 </Grid.ColumnDefinitions>
                 <StackLayout   Grid.Column="1"  VerticalOptions="End" Margin="0,15,0,15">
 
-                        <Frame    HeightRequest="30"  CornerRadius="25">
-                            <StackLayout Orientation="Horizontal">
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="LogOut_clicked" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                                <Label Text="Sign Out" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Large"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                    <Image Source="exit.png" Margin="0,0,30,0" HorizontalOptions="End"/>
-                                </StackLayout>
+                    <Frame    HeightRequest="30"  CornerRadius="25">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LogOut_clicked" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Change Nickname/Password" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Large"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Image Source="settings.png" Margin="0,0,30,0" HorizontalOptions="End"/>
                             </StackLayout>
-                        </Frame>
-                    
+                        </StackLayout>
+                    </Frame>
+                    <Frame    HeightRequest="30"  CornerRadius="25">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LogOut_clicked" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Sign Out" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Large"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Image Source="exit.png" Margin="0,0,30,0" HorizontalOptions="End"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
 
 
                 </StackLayout>

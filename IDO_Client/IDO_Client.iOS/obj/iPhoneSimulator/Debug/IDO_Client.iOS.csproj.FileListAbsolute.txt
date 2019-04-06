@@ -57,3 +57,6 @@ C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.iOS\obj\iPhoneSimulator\Debug\IDO_Client.iOS.csproj.CopyComplete
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.iOS\obj\iPhoneSimulator\Debug\IDO_Client.iOS.exe
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.iOS\obj\iPhoneSimulator\Debug\IDO_Client.iOS.pdb
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.iOS\bin\iPhoneSimulator\Debug\Newtonsoft.Json.dll
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.iOS\bin\iPhoneSimulator\Debug\Newtonsoft.Json.pdb
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.iOS\bin\iPhoneSimulator\Debug\IDO_Client.dll.mdb

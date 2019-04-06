@@ -4,6 +4,7 @@ C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\Java.Interop.dll
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\Mono.Android.dll
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\mscorlib.dll
+C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\Newtonsoft.Json.dll
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\System.Core.dll
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\System.dll
 C:\Users\maste\Documents\ШАРАГА\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\System.Numerics.dll

@@ -9,6 +9,8 @@ using Android.OS;
 
 namespace IDO_Client.Droid
 {
+
+
     [Activity(Label = "IDIDSOMETHING", Theme = "@style/Theme.Splash", Icon = "@drawable/startpageimage", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, LaunchMode = LaunchMode.SingleTop)]
     //[Activity(Label = "IDO_Client", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IDO_Client.AccountManagementPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,8 @@ namespace IDO_Client.Tabs
 
         private void LogOut_clicked(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new CustomNavigationPage(new Login());
+            App.profile = null;
         }
     }
 }

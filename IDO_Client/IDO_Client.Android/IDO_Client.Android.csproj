@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="CustomNavigationPageRenderer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\ToastMessage.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
