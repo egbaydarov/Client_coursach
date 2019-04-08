@@ -1,4 +1,5 @@
 ﻿using IDO_Client.AccountManagementPages;
+using IDO_Client.Controls;
 using IDO_Client.Models;
 using IDO_Client.Models.Responses;
 using Newtonsoft.Json;
@@ -14,7 +15,7 @@ namespace IDO_Client
 {
     public partial class App : Application
     {
-        public const string server = @"http://192.168.1.39:44374";
+        public const string server = @"http://10.110.14.40:44374";
         public const string Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzzxcvbnm<>_-";
 
 

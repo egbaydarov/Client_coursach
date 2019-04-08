@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using IDO_Client;
+using IDO_Client.Controls;
 
 [assembly: Xamarin.Forms.Dependency(typeof(MessageAndroid))]
 namespace IDO_Client

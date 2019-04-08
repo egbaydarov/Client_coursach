@@ -42,6 +42,10 @@
       "frameworks": {
         "monoandroid81": {
           "dependencies": {
+            "Xam.Plugins.Forms.ImageCircle": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
             "Xamarin.Android.Support.Core.Utils": {
               "target": "Package",
               "version": "[28.0.0.1, )"
@@ -134,6 +138,10 @@
             "Xam.Plugin.Media": {
               "target": "Package",
               "version": "[4.0.1.5, )"
+            },
+            "Xam.Plugins.Forms.ImageCircle": {
+              "target": "Package",
+              "version": "[2.0.2, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",

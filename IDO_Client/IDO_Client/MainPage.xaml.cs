@@ -23,5 +23,12 @@ namespace IDO_Client
             this.Children.Add(new Home());
             this.Children.Add(new Settings());
         }
+
+        private void OnPAgeChanged_Handler(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            
+
+
+        }
     }
 }

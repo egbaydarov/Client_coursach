@@ -15,23 +15,23 @@
                 </Grid.ColumnDefinitions>
                 <StackLayout   Grid.Column="1"  VerticalOptions="End" Margin="0,15,0,15">
 
-                    <Frame    HeightRequest="30"  CornerRadius="25">
+                    <Frame HasShadow="True" Padding="5,5,5,5"   HeightRequest="30"  CornerRadius="25">
                         <StackLayout Orientation="Horizontal">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="LogOut_clicked" NumberOfTapsRequired="1"/>
                             </StackLayout.GestureRecognizers>
-                            <Label Text="Change Nickname/Password" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Large"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Text="Change Nickname or Password" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                                 <Image Source="settings.png" Margin="0,0,30,0" HorizontalOptions="End"/>
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <Frame    HeightRequest="30"  CornerRadius="25">
+                    <Frame HasShadow="True"  Padding="5,5,5,5" HeightRequest="30"  CornerRadius="25">
                         <StackLayout Orientation="Horizontal">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="LogOut_clicked" NumberOfTapsRequired="1"/>
                             </StackLayout.GestureRecognizers>
-                            <Label Text="Sign Out" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Large"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Text="Sign Out" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                                 <Image Source="exit.png" Margin="0,0,30,0" HorizontalOptions="End"/>
                             </StackLayout>

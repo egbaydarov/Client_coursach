@@ -23,7 +23,7 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Image Source="startpageimage.png" HeightRequest="210" VerticalOptions="End" Margin="0,0,0,25" />
-                <Entry x:Name="UsernameEntry" Grid.Row="1" Placeholder="Phone number, email or username" PlaceholderColor="#bababa" FontSize="16" MaxLength="16" />
+                <Entry x:Name="UsernameEntry" Grid.Row="1" Placeholder="Nickname" PlaceholderColor="#bababa" FontSize="16" MaxLength="16" />
                 <Entry x:Name="PasswordEntry" Grid.Row="2" Placeholder="Password" PlaceholderColor="#bababa" FontSize="16" IsTextPredictionEnabled="False" MaxLength="25"  IsPassword="True"/>
                 <Button AutomationId="LoginButton" Clicked="Login_Clicked" Text="Log In" BorderColor="Black" TextColor="Black" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" CornerRadius="26" BorderWidth="2" BackgroundColor="White"/>
                 

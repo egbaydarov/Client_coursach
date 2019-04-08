@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDO_Client.Android", "IDO_C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDO_Client.iOS", "IDO_Client\IDO_Client.iOS\IDO_Client.iOS.csproj", "{86709C81-3DB2-497A-988B-18DF8FC598DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDO_Client", "IDO_Client\IDO_Client\IDO_Client.csproj", "{A2ABA385-DFCA-4451-B38E-0A2AD21297F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDO_Client", "IDO_Client\IDO_Client\IDO_Client.csproj", "{A2ABA385-DFCA-4451-B38E-0A2AD21297F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

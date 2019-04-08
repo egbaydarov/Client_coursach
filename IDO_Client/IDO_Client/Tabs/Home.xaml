@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDO_Client.Tabs.Home"
-             Title="Home" Icon="account.png" >
+             Title="Home" Icon="account.png" 
+             BackgroundColor="LightSkyBlue">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"

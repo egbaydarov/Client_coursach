@@ -1,4 +1,5 @@
 ﻿using IDO_Client.AccountManagementPages;
+using IDO_Client.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,6 @@ namespace IDO_Client.Tabs
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             Idid.IsCameraShowed = false;
         }
         private void LogOut_clicked(object sender, EventArgs e)

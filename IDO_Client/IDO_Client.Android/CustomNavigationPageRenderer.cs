@@ -8,7 +8,7 @@ using Android.Content;
 using Android.Widget;
 using App1;
 using App1.Droid.Renderers;
-using IDO_Client;
+using IDO_Client.Controls;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationPageRenderer))]
 namespace App1.Droid.Renderers

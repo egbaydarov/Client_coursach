@@ -2,16 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDO_Client.Tabs.Idid"
-             Title="I DID ..." Icon="idid.png" >
-    <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+             Title="I DID ..." Icon="idid.png"
+             xmlns:controlges="clr-namespace:IDO_Client.Controls"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             BackgroundColor="White"
+             >
 
-            <Image x:Name="PhotoImage" />
-            <Button x:Name="CameraButton" Text="Take Photo" Grid.Row="1"  />
+    <ContentPage.Content >
+        <Grid RowSpacing="10" >
+            <Grid.RowDefinitions >
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <forms:CachedImage x:Name="PhotoImage" Grid.Row="0"  Source="chooseimage.png"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Aspect="AspectFill"/>
+            <!--<Image  Grid.Row="0"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Source="frame.png" Aspect="Fill"/>-->
+
+            <controlges:BorderlessEditor Grid.Row="2" x:Name="Description" BackgroundColor="WhiteSmoke" HeightRequest="70" Placeholder="Describe your achievement. . ." />
+            
+            <Button x:Name="CameraButton" Text="Yes I Did This" Clicked="CameraButton_Clicked"  BorderColor="Black" TextColor="Black" HeightRequest="35"  Grid.Row="3" Margin="10,0,10,0"  CornerRadius="26" BorderWidth="2" BackgroundColor="White" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
