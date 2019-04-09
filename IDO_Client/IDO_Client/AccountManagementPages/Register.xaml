@@ -27,7 +27,8 @@
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
-                    <Button x:Name="RegisterButton" Clicked="Register_Clicked" TextColor="Black" BorderColor="#000000" VerticalOptions="EndAndExpand" Text="Create Account" Margin="16" CornerRadius="26" BorderWidth="2" BackgroundColor="White"/>
+                    <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator" Grid.Row="3"/>
+                    <Button Style="{StaticResource blackborderbutton}" Clicked="Register_Clicked"  VerticalOptions="EndAndExpand" Text="Create Account" Margin="16"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

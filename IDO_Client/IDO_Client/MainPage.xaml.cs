@@ -1,8 +1,12 @@
-﻿using IDO_Client.Tabs;
+﻿using IDO_Client.Controls;
+using IDO_Client.Models;
+using IDO_Client.Tabs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -17,12 +21,15 @@ namespace IDO_Client
         public MainPage()
         {
             InitializeComponent();
-            this.Children.Add(new Follows());
-            this.Children.Add(new Feed());
+            this.Children.Add(new Follows(App.profile.Nickname));
+            this.Children.Add(new Feed(App.profile.Nickname));
             this.Children.Add(new Idid());
-            this.Children.Add(new Home());
+            this.Children.Add(new Home(App.profile));
             this.Children.Add(new Settings());
+            
         }
+
+        
 
         private void OnPAgeChanged_Handler(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {

@@ -15,8 +15,8 @@ namespace IDO_Client
 {
     public partial class App : Application
     {
-        public const string server = @"http://10.110.14.40:44374";
-        public const string Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzzxcvbnm<>_-";
+        public const string server = @"http://192.168.1.39:44374";
+        public const string Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzzxcvbnm1234567890<>_-";
 
 
 
@@ -40,6 +40,14 @@ namespace IDO_Client
                     if (response.IsOK())
                     {
                         profile = response.Data;
+                        object nick;
+                        object passs;
+                        if (!App.Current.Properties.TryGetValue("nickname", out nick) && !App.Current.Properties.TryGetValue("password", out passs))
+                        {
+                            App.Current.Properties.Add("nickname", profile.Nickname);
+                            App.Current.Properties.Add("password", profile.Password);
+                        }
+                        await App.Current.SavePropertiesAsync();
                         DependencyService.Get<IMessage>().ShortAlert("Succesfull!");
                         return true;
                     }

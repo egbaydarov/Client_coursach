@@ -25,8 +25,15 @@ namespace IDO_Client.Tabs
         }
         private void LogOut_clicked(object sender, EventArgs e)
         {
+            App.Current.Properties.Remove("password");
+            App.Current.Properties.Remove("nickname");
             App.Current.MainPage = new CustomNavigationPage(new Login());
             App.profile = null;
+        }
+
+        private void Change_clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

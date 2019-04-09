@@ -8,6 +8,10 @@ namespace IDO_Client.Models
 {
     public class User
     {
+        public User()
+        {
+        }
+
         public User(string nickname, string password)
         {
             Nickname = nickname;
@@ -23,6 +27,8 @@ namespace IDO_Client.Models
         [JsonProperty(PropertyName = "nickname")]
         public string Nickname { get; set; }
 
+        [JsonProperty(PropertyName = "avatar")]
+        public string Avatar { get; set; }
         [JsonProperty(PropertyName = "password")]
         public string Password { get; set; }
 

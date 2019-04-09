@@ -27,6 +27,7 @@ namespace IDO_Client.AccountManagementPages
         {
             try
             {
+                using (var scope = new ActivityIndicatorScope(activityIndicator, true))
                 using (var client = new HttpClient())
                 {
                     ServicePointManager.ServerCertificateValidationCallback +=

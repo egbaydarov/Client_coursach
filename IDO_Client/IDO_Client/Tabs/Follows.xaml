@@ -3,12 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDO_Client.Tabs.Follows"
              Title="Follows" Icon="follows.png"
-             BackgroundColor="LightSkyBlue">
+             BackgroundColor="White"
+             >
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar Placeholder="Search . . ." TextChanged="OnSearchDataChanged"/>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator"/>
+            <ListView x:Name="FollowsView">
+                <ListView.ItemTemplate>
+                
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Frame HasShadow="True" Padding="5,5,5,5"   HeightRequest="30"  CornerRadius="25">
+                                
+                                <StackLayout Orientation="Horizontal">
+                                    
+                                    <Label Text="{Binding Nickname}" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" >
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Image Source="startpageimage.png" Margin="0,0,30,0" HorizontalOptions="End"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -27,6 +27,7 @@ namespace IDO_Client.Tabs
                 return;
             try
             {
+                
                 IsCameraShowed = true;
                 if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
                 {
@@ -40,8 +41,11 @@ namespace IDO_Client.Tabs
                     }))
                     {
                         if (file == null) return;
+
+                        using (var scope = new ActivityIndicatorScope(activityIndicator, true))
                         using (var stream = file.GetStream())
                         {
+                            PhotoImage.Source = "loading.png";
                             buffer = new byte[stream.Length];
                             await stream.ReadAsync(buffer, 0, buffer.Length);
                             PhotoImage.Source = ImageSource.FromStream(() => new MemoryStream(buffer));
@@ -66,7 +70,8 @@ namespace IDO_Client.Tabs
             {
                 if (String.IsNullOrWhiteSpace(Description.Text) || buffer == null)
                     throw new ApplicationException("Oops!, Your forgot about decription or image");
-                
+
+                using (var scope = new ActivityIndicatorScope(activityIndicator, true))
                 using (HttpClient client = new HttpClient())
                 {
                     MultipartFormDataContent content = new MultipartFormDataContent();

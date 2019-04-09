@@ -15,22 +15,24 @@ namespace IDO_Client.Tabs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Feed : ContentPage
     {
+        string nickname;
         protected async override void OnAppearing()
         {
             base.OnAppearing();
 
             var Data = new ObservableCollection<Data>();
-            var notes = await GetUserNotes(App.profile.Nickname, 0, 0);
+            var notes = await GetUserNotes(nickname, 0, 0);
 
             FeedView.ItemsSource = Data;
             foreach (var i in notes)
-                Data.Add(await CreateDataModelFromNote(i, App.profile.Nickname));
+                Data.Add(CreateDataModelFromNote(i, nickname));
 
 
             Idid.IsCameraShowed = false;
         }
-        public Feed()
+        public Feed(string nick)
         {
+            nickname = nick;
             InitializeComponent();
 
 
@@ -55,7 +57,7 @@ namespace IDO_Client.Tabs
                 return new List<Note>();
             }
         }
-        public async Task<Data> CreateDataModelFromNote(Note note, string nickname)
+        public Data CreateDataModelFromNote(Note note, string nickname)
         {
 
             try
@@ -85,5 +87,16 @@ namespace IDO_Client.Tabs
             }
         }
 
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                App.Current.MainPage = new MainPage();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

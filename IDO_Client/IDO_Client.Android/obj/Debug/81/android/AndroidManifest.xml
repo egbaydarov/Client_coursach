@@ -11,7 +11,7 @@
     <provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.IDO_Client.fileprovider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
     </provider>
-    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/startpageimage" android:label="IDIDSOMETHING" android:launchMode="singleTop" android:theme="@style/Theme.Splash" android:name="md536030262d972c71c667837afc23bf4d7.MainActivity">
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/startpageimage" android:label="MOYOGOVNO" android:launchMode="singleTop" android:theme="@style/Theme.Splash" android:name="md536030262d972c71c667837afc23bf4d7.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
@@ -26,7 +26,7 @@
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/xamarin_essentials_fileprovider_file_paths" />
     </provider>
     <receiver android:enabled="true" android:exported="false" android:name="md51558244f76c53b6aeda52c8a337f2c37.PowerSaveModeBroadcastReceiver" />
-    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.IDO_Client.mono.MonoRuntimeProvider.__mono_init__" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="1999999999" android:authorities="com.companyname.IDO_Client.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>
