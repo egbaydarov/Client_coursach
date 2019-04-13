@@ -6,9 +6,9 @@
              android:TabbedPage.ToolbarPlacement="Bottom"
              BarBackgroundColor="White"
              BarTextColor="Black"
+             
              android:TabbedPage.BarItemColor="Black"
              android:TabbedPage.BarSelectedItemColor="Black"
-             PagesChanged="OnPAgeChanged_Handler"
              android:TabbedPage.IsSwipePagingEnabled="False">
     
 </TabbedPage>

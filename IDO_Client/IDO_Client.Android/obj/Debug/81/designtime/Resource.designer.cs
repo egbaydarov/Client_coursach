@@ -4981,7 +4981,10 @@ namespace IDO_Client.Droid
 			public const int idid = 2130771985;
 			
 			// aapt resource value: 0x7F010012
-			public const int loading = 2130771986;
+			public const int load = 2130771986;
+			
+			// aapt resource value: 0x7F010013
+			public const int loading = 2130771987;
 			
 			// aapt resource value: 0x7F090105
 			public const int mr_button_connected_dark = 2131296517;
@@ -5082,17 +5085,23 @@ namespace IDO_Client.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010013
-			public const int settings = 2130771987;
-			
 			// aapt resource value: 0x7F010014
-			public const int splash = 2130771988;
+			public const int progress = 2130771988;
 			
 			// aapt resource value: 0x7F010015
-			public const int splash_drawable = 2130771989;
+			public const int settings = 2130771989;
 			
 			// aapt resource value: 0x7F010016
-			public const int startpageimage = 2130771990;
+			public const int splash = 2130771990;
+			
+			// aapt resource value: 0x7F010017
+			public const int splash_drawable = 2130771991;
+			
+			// aapt resource value: 0x7F010018
+			public const int startpageimage = 2130771992;
+			
+			// aapt resource value: 0x7F010019
+			public const int threedots = 2130771993;
 			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;

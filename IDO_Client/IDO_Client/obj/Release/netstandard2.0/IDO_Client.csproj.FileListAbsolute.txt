@@ -1,9 +1,11 @@
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\bin\Release\netstandard2.0\IDO_Client.deps.json
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\bin\Release\netstandard2.0\IDO_Client.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\bin\Release\netstandard2.0\IDO_Client.pdb
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\IDO_Client.csprojAssemblyReference.cache
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\AccountManagementPages\Login.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\AccountManagementPages\Register.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\App.xaml.g.cs
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\Controls\CustomNavigationPage.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\MainPage.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\Tabs\Feed.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\Tabs\Follows.xaml.g.cs
@@ -16,4 +18,4 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\IDO_Client.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\IDO_Client.pdb
-C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\Controls\CustomNavigationPage.xaml.g.cs
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\LoadPAge.xaml.g.cs

@@ -15,20 +15,15 @@ namespace IDO_Client.AccountManagementPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            InitializeComponent();
-            object nick;
-            object pass;
-            if (App.Current.Properties.TryGetValue("nickname", out nick) && App.Current.Properties.TryGetValue("password", out pass) && await App.TryLogin(nick as string, pass as string))
-            {
-                App.Current.MainPage = new MainPage();
-            }
+            
         }
         public Login()
         {
             
+            InitializeComponent();
         }
 
         private async void Login_Clicked(object sender, EventArgs e)

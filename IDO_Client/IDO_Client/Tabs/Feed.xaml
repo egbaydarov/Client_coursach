@@ -2,51 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 				 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 				 xmlns:control="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:controls="clr-namespace:IDO_Client.Controls"
-             x:Class="IDO_Client.Tabs.Feed"
+                 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:controls="clr-namespace:IDO_Client.Controls"
+                 x:Class="IDO_Client.Tabs.Feed"
                  Icon="feed.png"
-                 Title="Feed">
+                 Title="Feed"
+                 BackgroundColor="White"
+                 NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Grid BackgroundColor="White">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            
 
 
-                <ListView x:Name="FeedView" Grid.Row="0"  HasUnevenRows="true" CachingStrategy="RecycleElement"  >
+                <ListView x:Name="FeedView" Grid.Row="0"  HasUnevenRows="true" CachingStrategy="RecycleElement"  ItemTapped="OnItemTapped" >
                     <ListView.ItemTemplate>
                         <DataTemplate x:Name="dataTemplate">
-                            <ViewCell BindingContext="">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="60" />
-                                        <RowDefinition Height="300" />
-                                        <RowDefinition Height="50" />
-                                        <RowDefinition Height="20" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <StackLayout Orientation="Horizontal" Margin="10,0,10,0" Spacing="5" Grid.Row="0">
-                                        <control:CircleImage VerticalOptions="Center" HeightRequest="30" WidthRequest="30" Source="splash_drawable.jpg" HorizontalOptions="Center" />
-                                        <Label Text="{Binding Name}"  VerticalOptions="Center" FontAttributes="Bold" TextColor="Black" />
-                                    </StackLayout >
-                                    <ffimageloading:CachedImage Grid.Row="1" Source="{Binding Path=Image, Mode=OneWay, UpdateSourceEventName=sds}"  x:Name="Photo" Aspect="Fill" RetryCount="10" LoadingPlaceholder="loading.png"/>
-                                    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" Grid.Row="2" Margin="10,0,10,0">
-                                        <control:CircleImage HeightRequest="30" WidthRequest="30" Source="startpageimage.png"/>
-                                        <Label Text="{Binding LukasCount, StringFormat='Считают достойным {0} человек'}" FontAttributes="Bold" FontSize="12" TextColor="Black" Grid.Row="3" Margin="10,12.5,10,0" />
-                                    </StackLayout>
-                                    <Label Text="{Binding Description}" Grid.Row="4" TextColor="Black" Margin="10,0,10,15"/>
-                                </Grid>
-                            </ViewCell>
+                        <controls:NoteCell x:Name="viewCell">
 
-                        </DataTemplate>
+
+                        </controls:NoteCell>
+                    </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </Grid>
-
-            <Button x:Name="Back" Text="Close" Margin="17,0,17,10" HeightRequest="41"
-                    Clicked="Back_Clicked" Style="{StaticResource blackborderbutton} "/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

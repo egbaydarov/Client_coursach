@@ -21,21 +21,20 @@ namespace IDO_Client
         public MainPage()
         {
             InitializeComponent();
-            this.Children.Add(new Follows(App.profile.Nickname));
-            this.Children.Add(new Feed(App.profile.Nickname));
+            var navigationFollowsPage = new NavigationPage(new Follows(App.profile.Nickname));
+            navigationFollowsPage.Icon = "follows.png";
+            navigationFollowsPage.Title = "Follows";
+            navigationFollowsPage.BarBackgroundColor = Color.White;
+            var navigationHomePage = new NavigationPage(new Home(App.profile, true));
+            navigationHomePage.Icon = "account.png";
+            navigationHomePage.Title = "Home";
+            navigationHomePage.BarBackgroundColor = Color.White;
+            this.Children.Add(navigationFollowsPage);
+            this.Children.Add(new Feed(App.profile.Nickname, true));
             this.Children.Add(new Idid());
-            this.Children.Add(new Home(App.profile));
+            this.Children.Add(navigationHomePage);
             this.Children.Add(new Settings());
             
-        }
-
-        
-
-        private void OnPAgeChanged_Handler(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            
-
-
         }
     }
 }

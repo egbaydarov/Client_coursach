@@ -4,25 +4,26 @@
              x:Class="IDO_Client.Tabs.Follows"
              Title="Follows" Icon="follows.png"
              BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
              >
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Search . . ." TextChanged="OnSearchDataChanged"/>
+            <SearchBar Placeholder="Search . . ." TextChanged="OnSearchDataChanged" x:Name="searchBar"/>
             <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator"/>
-            <ListView x:Name="FollowsView">
+            <ListView x:Name="FollowsView" ItemTapped="OnItemTapped">
                 <ListView.ItemTemplate>
                 
-                    <DataTemplate>
+                    <DataTemplate >
 
                         <ViewCell>
                             <Frame HasShadow="True" Padding="5,5,5,5"   HeightRequest="30"  CornerRadius="25">
-                                
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
                                 <StackLayout Orientation="Horizontal">
                                     
                                     <Label Text="{Binding Nickname}" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" >
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1"/>
-                                        </Label.GestureRecognizers>
+                                        
                                     </Label>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                                         <Image Source="startpageimage.png" Margin="0,0,30,0" HorizontalOptions="End"/>

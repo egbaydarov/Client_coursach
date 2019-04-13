@@ -31,12 +31,11 @@ namespace IDO_Client.Tabs
                 IsCameraShowed = true;
                 if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
                 {
-
                     await CrossMedia.Current.Initialize();
                     using (var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                     {
                         PhotoSize = PhotoSize.Medium,
-                        SaveToAlbum = true,
+                        SaveToAlbum = App.CurrentAppSettings.IsSaveToGallery,
                         Name = "IDID_Photo.jpg"
                     }))
                     {
@@ -45,7 +44,7 @@ namespace IDO_Client.Tabs
                         using (var scope = new ActivityIndicatorScope(activityIndicator, true))
                         using (var stream = file.GetStream())
                         {
-                            PhotoImage.Source = "loading.png";
+                            PhotoImage.Source = "load.gif";
                             buffer = new byte[stream.Length];
                             await stream.ReadAsync(buffer, 0, buffer.Length);
                             PhotoImage.Source = ImageSource.FromStream(() => new MemoryStream(buffer));
@@ -64,7 +63,7 @@ namespace IDO_Client.Tabs
             
         }
 
-        private async void CameraButton_Clicked(object sender, EventArgs e)
+        private async void Send_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -102,6 +101,30 @@ namespace IDO_Client.Tabs
             catch(Exception ex)
             {
                 DependencyService.Get<IMessage>().LongAlert(ex.Message);
+            }
+        }
+
+        private async void ChangeImage_clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CrossMedia.Current.IsPickVideoSupported)
+                    using (var file = await CrossMedia.Current.PickPhotoAsync())
+                    {
+                        if (file == null)
+                            return;
+                        using (var stream = file.GetStream())
+                        {
+                            PhotoImage.Source = "load.gif";
+                            buffer = new byte[stream.Length];
+                            await stream.ReadAsync(buffer, 0, buffer.Length);
+                            PhotoImage.Source = ImageSource.FromStream(() => new MemoryStream(buffer));
+                        }
+                    }
+            }
+            catch
+            {
+                DependencyService.Get<IMessage>().LongAlert("Oops, Cant load photo");
             }
         }
     }

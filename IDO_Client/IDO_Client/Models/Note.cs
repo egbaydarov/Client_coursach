@@ -8,14 +8,16 @@ namespace IDO_Client.Models
 {
     public class Note
     {
-        public Note(string description, string imageReference, List<string> lukasers, int lukascount = 0)
+        public Note(string description, string imageReference, List<string> lukasers, int lukascount = 0,string nick = null)
         {
             Description = description;
             ImageReference = imageReference;
             LukasCount = lukascount;
             Lukasers = lukasers;
-        }
+            nickname = nick;
 
+        }
+        public string nickname;
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 

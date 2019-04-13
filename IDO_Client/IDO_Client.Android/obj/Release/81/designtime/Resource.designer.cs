@@ -4404,6 +4404,18 @@ namespace IDO_Client.Droid
 			// aapt resource value: 0x7F090055
 			public const int avd_show_password = 2131296341;
 			
+			// aapt resource value: 0x7F010003
+			public const int border = 2130771971;
+			
+			// aapt resource value: 0x7F010004
+			public const int chooseimage = 2130771972;
+			
+			// aapt resource value: 0x7F010005
+			public const int CurvedMask = 2130771973;
+			
+			// aapt resource value: 0x7F010006
+			public const int CustomEditor = 2130771974;
+			
 			// aapt resource value: 0x7F090056
 			public const int design_bottom_navigation_item_background = 2131296342;
 			
@@ -4422,14 +4434,17 @@ namespace IDO_Client.Droid
 			// aapt resource value: 0x7F09005B
 			public const int design_snackbar_background = 2131296347;
 			
-			// aapt resource value: 0x7F010003
-			public const int exit = 2130771971;
+			// aapt resource value: 0x7F010007
+			public const int exit = 2130771975;
 			
-			// aapt resource value: 0x7F010004
-			public const int feed = 2130771972;
+			// aapt resource value: 0x7F010008
+			public const int feed = 2130771976;
 			
-			// aapt resource value: 0x7F010005
-			public const int follows = 2130771973;
+			// aapt resource value: 0x7F010009
+			public const int follows = 2130771977;
+			
+			// aapt resource value: 0x7F010010
+			public const int frame = 2130771984;
 			
 			// aapt resource value: 0x7F090054
 			public const int ic_audiotrack_dark = 2131296340;
@@ -4962,8 +4977,11 @@ namespace IDO_Client.Droid
 			// aapt resource value: 0x7F090104
 			public const int ic_vol_type_tv_light = 2131296516;
 			
-			// aapt resource value: 0x7F010006
-			public const int idid = 2130771974;
+			// aapt resource value: 0x7F010011
+			public const int idid = 2130771985;
+			
+			// aapt resource value: 0x7F010012
+			public const int loading = 2130771986;
 			
 			// aapt resource value: 0x7F090105
 			public const int mr_button_connected_dark = 2131296517;
@@ -5064,17 +5082,20 @@ namespace IDO_Client.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010007
-			public const int settings = 2130771975;
+			// aapt resource value: 0x7F010013
+			public const int settings = 2130771987;
 			
-			// aapt resource value: 0x7F010008
-			public const int splash = 2130771976;
+			// aapt resource value: 0x7F010014
+			public const int splash = 2130771988;
 			
-			// aapt resource value: 0x7F010009
-			public const int splash_drawable = 2130771977;
+			// aapt resource value: 0x7F010015
+			public const int splash_drawable = 2130771989;
 			
-			// aapt resource value: 0x7F010010
-			public const int startpageimage = 2130771984;
+			// aapt resource value: 0x7F010016
+			public const int startpageimage = 2130771990;
+			
+			// aapt resource value: 0x7F010017
+			public const int threedots = 2130771991;
 			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;

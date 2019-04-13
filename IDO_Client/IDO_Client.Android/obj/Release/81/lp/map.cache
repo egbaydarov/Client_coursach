@@ -1,5 +1,11 @@
+FFImageLoading
+FFImageLoading.Forms
+FFImageLoading.Forms.Platform
+FFImageLoading.Platform
 FormsViewGroup
 IDO_Client
+ImageCircle.Forms.Plugin.Abstractions
+ImageCircle.Forms.Plugin.Android
 Newtonsoft.Json
 Plugin.CurrentActivity
 Plugin.Media
@@ -31,3 +37,5 @@ Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 netstandard
+System.Resources.ResourceManager
+System.Reflection.Extensions

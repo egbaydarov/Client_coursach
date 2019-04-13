@@ -3,6 +3,7 @@ using IDO_Client.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,8 @@ namespace IDO_Client.Tabs
         public Settings()
         {
             InitializeComponent();
+            SaveGalarySwitcher.BindingContext = App.CurrentAppSettings;
+            SaveGalarySwitcher.SetBinding(Switch.IsToggledProperty, "IsSaveToGallery");
         }
         protected override void OnAppearing()
         {
@@ -33,7 +36,18 @@ namespace IDO_Client.Tabs
 
         private void Change_clicked(object sender, EventArgs e)
         {
+            using (HttpClient client = new HttpClient())
+            {
+                
+            }
+        }
 
+        private void OnSaveGallery(object sender, ToggledEventArgs e)
+        {
+            if (App.Current.Properties.Keys.Contains("IsSaveToGallery"))
+                App.Current.Properties["IsSaveToGallery"] = SaveGalarySwitcher.IsToggled;
+            else
+                App.Current.Properties.Add("IsSaveToGallery", SaveGalarySwitcher.IsToggled);
         }
     }
 }

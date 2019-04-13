@@ -16,16 +16,26 @@ namespace IDO_Client
     public partial class App : Application
     {
         public const string server = @"http://192.168.1.39:44374";
+        //public const string server = @"https://idoapi20190409055028.azurewebsites.net/";
         public const string Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzzxcvbnm1234567890<>_-";
 
+        public static User profile;
+        public static AppSettings CurrentAppSettings { get; set; }
 
 
         public App()
         {
             InitializeComponent();
 
+            CurrentAppSettings = new AppSettings();
+            object IsSaveToGallery;
+            if (App.Current.Properties.TryGetValue("IsSaveToGalary", out IsSaveToGallery))
+            {
+                CurrentAppSettings.IsSaveToGallery = (bool)IsSaveToGallery;
+            }
+            MainPage = new LoadPage();
+
         }
-        public static User profile; 
         public static async Task<bool> TryLogin(string login, string pass)
         {
             try
@@ -64,11 +74,25 @@ namespace IDO_Client
                 return false;
             }
         }
-        protected override void OnStart()
+        protected async override void OnStart()
         {
-            // Check for saved credentials (TO DO)
 
-            MainPage = new CustomNavigationPage(new Login());
+            object nick;
+            object pass;
+            if (App.Current.Properties.TryGetValue("nickname", out nick) && App.Current.Properties.TryGetValue("password", out pass))
+            {
+
+                bool isLogined = await App.TryLogin(nick as string, pass as string);
+                if (isLogined)
+                {
+                    MainPage = new MainPage();
+                }
+                else
+                    MainPage = new CustomNavigationPage(new Login());
+
+            }
+            else
+                MainPage = new CustomNavigationPage(new Login());
         }
 
         protected override void OnSleep()

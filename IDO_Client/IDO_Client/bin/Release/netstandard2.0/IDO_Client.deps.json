@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "a1f303e8ed10710b8510e5c08bb21cdc863904e8"
+    "signature": "d6de1681f2d98122ee856ea3c8d2eef019ae91bb"
   },
   "compilationOptions": {},
   "targets": {
@@ -12,7 +12,9 @@
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.1",
           "Xam.Plugin.Media": "4.0.1.5",
+          "Xam.Plugins.Forms.ImageCircle": "2.0.2",
           "Xamarin.Essentials": "1.1.0",
+          "Xamarin.FFImageLoading.Forms": "2.4.3.840",
           "Xamarin.Forms": "3.6.0.293080"
         },
         "runtime": {
@@ -60,6 +62,18 @@
           }
         }
       },
+      "Xam.Plugins.Forms.ImageCircle/2.0.2": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3",
+          "Xamarin.Forms": "3.6.0.293080"
+        },
+        "runtime": {
+          "lib/netstandard1.0/ImageCircle.Forms.Plugin.Abstractions.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
+          }
+        }
+      },
       "Xamarin.Essentials/1.1.0": {
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
@@ -68,6 +82,30 @@
           "lib/netstandard2.0/Xamarin.Essentials.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading/2.4.3.840": {
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Platform.dll": {
+            "assemblyVersion": "2.4.3.840",
+            "fileVersion": "2.4.3.840"
+          },
+          "lib/netstandard1.0/FFImageLoading.dll": {
+            "assemblyVersion": "2.4.3.840",
+            "fileVersion": "2.4.3.840"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading.Forms/2.4.3.840": {
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.3.840",
+          "Xamarin.Forms": "3.6.0.293080"
+        },
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Forms.dll": {
+            "assemblyVersion": "2.4.3.840",
+            "fileVersion": "2.4.3.840"
           }
         }
       },
@@ -137,12 +175,33 @@
       "path": "xam.plugin.media/4.0.1.5",
       "hashPath": "xam.plugin.media.4.0.1.5.nupkg.sha512"
     },
+    "Xam.Plugins.Forms.ImageCircle/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LyLQE2Pn9hHFKURhCCs5Z+5nb5KALmzQPUySeCi7AmCBbs0UkXQ48PSre8Nf4SbXSvASe8ewycD++xeqaeufJw==",
+      "path": "xam.plugins.forms.imagecircle/2.0.2",
+      "hashPath": "xam.plugins.forms.imagecircle.2.0.2.nupkg.sha512"
+    },
     "Xamarin.Essentials/1.1.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-W0XOt1dNMAE2POcsVotoKDDy5FdAOnR0qULKl6WI4kQEMxQ1sp84DsSU5iacV7oQUMuPhUBAm/3ywks0HO1QrQ==",
       "path": "xamarin.essentials/1.1.0",
       "hashPath": "xamarin.essentials.1.1.0.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading/2.4.3.840": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MUcVwR/hfaG6/GZ28g8YDDKnXI2JMfT4goanYoYgKuqjLjM44qwivrhnBZ0Zt/pTDpqiGUmGTIoakHiDihTVQQ==",
+      "path": "xamarin.ffimageloading/2.4.3.840",
+      "hashPath": "xamarin.ffimageloading.2.4.3.840.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading.Forms/2.4.3.840": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WEL6JcZPprgnlhz2at6uffOJtPyd1UOMNzve363olLNF5UX7GDWeIh6bkgZKTBy5SDVCp+m2cj3F64EAct5hDw==",
+      "path": "xamarin.ffimageloading.forms/2.4.3.840",
+      "hashPath": "xamarin.ffimageloading.forms.2.4.3.840.nupkg.sha512"
     },
     "Xamarin.Forms/3.6.0.293080": {
       "type": "package",

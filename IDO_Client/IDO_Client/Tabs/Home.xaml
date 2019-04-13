@@ -4,6 +4,7 @@
              x:Class="IDO_Client.Tabs.Home"
              Title="Home" Icon="account.png" 
              BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
              x:Name="HomePage">
     <ContentPage.Content >
         <ScrollView>
@@ -15,9 +16,12 @@
                         <RowDefinition Height="1.3*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-
                     <!--  header background  -->
-                    <Image Aspect="Fill" BindingContext="user" Source="loading.png" Grid.Row="0" HeightRequest="200"/>
+                    <Image Aspect="AspectFill" BindingContext="user" Source="loading.png" Grid.Row="0" HeightRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnChangeAvatar" NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Image  Aspect="Fill" Margin="0,-1,0,-1" Source="CurvedMask.png" VerticalOptions="End" Grid.Row="0" />
 
                     <!--  profile image  -->
@@ -34,40 +38,51 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
 
 
                         <StackLayout Grid.Column="0" >
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFollowersClicked" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
                             <Label x:Name = "Followers"   TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" >
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnFollowersClicked" NumberOfTapsRequired="1"/>
-                                </Label.GestureRecognizers>
+                                
                             </Label>
                             <Label  Text="Followers" TextColor="Black" FontSize="14" HorizontalOptions="CenterAndExpand" />
                         </StackLayout>
 
 
-                        <StackLayout  Grid.Column="1" >
+                        <StackLayout  Grid.Column="2" >
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFollowsClicked" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
                             <Label x:Name="Follows" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" >
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnFollowsClicked" NumberOfTapsRequired="1"/>
-                                </Label.GestureRecognizers>
+                                
                             </Label>
                             <Label  Text="Follows" TextColor="Black" FontSize="14" HorizontalOptions="CenterAndExpand" />
                         </StackLayout>
-                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator"/>
+                        <StackLayout  Grid.Column="1" >
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnGoalsClicked" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label x:Name="goals" Text="0" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" >
+                                
+                            </Label>
+                            <Label  Text="Goals" TextColor="Black" FontSize="14" HorizontalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        
 
                     </Grid>
 
                     <!--  follow button  -->
                     <StackLayout Grid.Row="3">
+                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False"  Margin="10" x:Name="activityIndicator"/>
                         <Button x:Name="Achievements" Text="Achievements" Margin="17,0,17,5" HeightRequest="41"
                     Clicked="OnAchievementsClicked" Style="{StaticResource blackborderbutton} "/>
                         <Button x:Name="Follow" Text="Follow" Margin="17,0,17,5" HeightRequest="41"
                     Clicked="OnFollowClicked" Style="{StaticResource blackborderbutton} "/>
-                        <Button x:Name="Back" Text="Close" Margin="17,0,17,10" HeightRequest="41"
-                    Clicked="Back_Clicked" Style="{StaticResource blackborderbutton} "/>
                     </StackLayout>
 
                 </Grid>

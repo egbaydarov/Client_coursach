@@ -17,6 +17,7 @@ namespace IDO_Client.Tabs
     public partial class Home : ContentPage
     {
         User user;
+        bool isTabPage;
         protected override void OnAppearing()
         {
             try
@@ -31,9 +32,9 @@ namespace IDO_Client.Tabs
                 DependencyService.Get<IMessage>().LongAlert("Can't Load Page");
             }
         }
-        public Home(User profile)
+        public Home(User profile, bool IsTabPage = false)
         {
-
+            isTabPage = IsTabPage;
             user = profile;
             InitializeComponent();
             if (App.profile.Nickname.Equals(user.Nickname))
@@ -41,8 +42,6 @@ namespace IDO_Client.Tabs
                 Follow.IsEnabled = false;
                 Follow.IsVisible = false;
 
-                Back.IsEnabled = false;
-                Back.IsVisible = false;
             }
             Name.BindingContext = user;
             Follows.BindingContext = user;
@@ -57,14 +56,44 @@ namespace IDO_Client.Tabs
 
         }
 
-        private void OnFollowersClicked(object sender, EventArgs e)
+        private async void OnFollowersClicked(object sender, EventArgs e)
         {
+            using (var scope = new ActivityIndicatorScope(activityIndicator, true))
+            {
+                var FollowersPage = new Follows(user.Nickname);
+                FollowersPage.isFollows = false;
+                List<User> users = new List<User>();
 
+                FollowersPage.SetSearchBarIsVisible(false);
+                foreach (var nick in user.Followers)
+                {
+                    users.Add(await Tabs.Follows.GetUserData(nick));
+                }
+
+                NavigationPage.SetHasNavigationBar(FollowersPage, true);
+                FollowersPage.SetItemSource(users);
+                await Navigation.PushAsync(FollowersPage);
+            }
         }
 
-        private void OnFollowsClicked(object sender, EventArgs e)
+        private async void OnFollowsClicked(object sender, EventArgs e)
         {
+            using (var scope = new ActivityIndicatorScope(activityIndicator, true))
+            {
+                var FollowsPage = new Follows(user.Nickname);
+                FollowsPage.isFollows = false;
+                List<User> users = new List<User>();
 
+                FollowsPage.SetSearchBarIsVisible(false);
+                foreach (var nick in user.Follows)
+                {
+                    users.Add(await Tabs.Follows.GetUserData(nick));
+                }
+
+                NavigationPage.SetHasNavigationBar(FollowsPage, true);
+                FollowsPage.SetItemSource(users);
+                await Navigation.PushAsync(FollowsPage);
+            }
         }
 
         private async void OnFollowClicked(object sender, EventArgs e)
@@ -117,27 +146,29 @@ namespace IDO_Client.Tabs
             }
         }
 
-        private void OnAchievementsClicked(object sender, EventArgs e)
+        private async void OnAchievementsClicked(object sender, EventArgs e)
         {
             try
             {
-                App.Current.MainPage = new Feed(user.Nickname);
+
+                var page = new Feed(user.Nickname);
+                NavigationPage.SetHasNavigationBar(page, true);
+                await Navigation.PushAsync(page);
             }
             catch
             {
-
             }
 
         }
 
-        private void Back_Clicked(object sender, EventArgs e)
+        private void OnGoalsClicked(object sender, EventArgs e)
         {
-            try
-            {
-                App.Current.MainPage = new MainPage();
-            }
-            catch
-            { }
+
+        }
+
+        private void OnChangeAvatar(object sender, EventArgs e)
+        {
+
         }
     }
 }

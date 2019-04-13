@@ -18,11 +18,23 @@ namespace IDO_Client.Tabs
     public partial class Follows : ContentPage
     {
         string Nickname;
+        public bool isFollows = true;
+        public void SetItemSource(List<User> users)
+        {
+            ObservableCollection<User> items = new ObservableCollection<User>(users);
+            FollowsView.ItemsSource = items;
+        }
+        public void SetSearchBarIsVisible(bool isvisivle)
+        {
+            searchBar.IsEnabled = isvisivle;
+            searchBar.IsVisible = isvisivle;
+        }
         protected async override void OnAppearing()
         {
+            base.OnAppearing();
+            if (isFollows)
             try
             {
-                base.OnAppearing();
                 ObservableCollection<User> items = new ObservableCollection<User>();
                 var User = await GetUserData(Nickname);
                 FollowsView.ItemsSource = items;
@@ -45,7 +57,7 @@ namespace IDO_Client.Tabs
 
         }
 
-        async Task<User> GetUserData(string Nickname)
+       static public async Task<User> GetUserData(string Nickname)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -78,7 +90,7 @@ namespace IDO_Client.Tabs
                 }
                 
             }
-            catch (Exception ex)
+            catch
             {
             }
         }
@@ -87,13 +99,20 @@ namespace IDO_Client.Tabs
         {
             try
             {
-                var label = (Label)sender;
-                App.Current.MainPage = new Home(await GetUserData(label.Text));
+                var user = (sender as Frame).BindingContext as User;
+                await Navigation.PushAsync(new Home(await GetUserData(user.Nickname)));
+                
             }
             catch (Exception ex)
             {
                 DependencyService.Get<IMessage>().ShortAlert(ex.Message);
             }
+        }
+
+        private void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null) return;
+            if (sender is ListView lv) lv.SelectedItem = null;
         }
     }
 }

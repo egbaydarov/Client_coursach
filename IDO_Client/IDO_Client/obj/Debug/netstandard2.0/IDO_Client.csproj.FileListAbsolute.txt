@@ -23,6 +23,9 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\bin\
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\bin\Debug\netstandard2.0\IDO_Client.pdb
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\AccountManagementPages\Login.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\AccountManagementPages\Register.xaml.g.cs
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\Controls\CustomNavigationPage.xaml.g.cs
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\LoadPAge.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\Tabs\Feed.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\Tabs\Follows.xaml.g.cs
@@ -32,9 +35,7 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\IDO_Client.csproj.CoreCompileInputs.cache
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\IDO_Client.AssemblyInfoInputs.cache
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\IDO_Client.AssemblyInfo.cs
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\IDO_Client.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\IDO_Client.pdb
-C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\Controls\CustomNavigationPage.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\IDO_Client.csprojAssemblyReference.cache
-C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\App.xaml.g.cs
-C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\XamlC.stamp
