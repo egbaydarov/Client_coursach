@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="IDO_Client.Tabs.Goals"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="GoalsView" ItemTapped="OnItemTapped" HasUnevenRows="True">
+                <ListView.ItemTemplate >
+
+                    <DataTemplate >
+
+                        <ViewCell>
+                            <Frame HasShadow="True" Padding="5,5,5,5"   CornerRadius="25">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnGoalTapped" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition  Height= "auto"/>
+                                            <RowDefinition  Height= "auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Nickname}"  x:Name="nickname" 
+                                               FontFamily="Rubik-Bold.ttf#Rubik-Bold"
+                                               TextColor="Black" 
+                                               Margin="15,7,0,0" 
+                                               FontSize="Large"
+                                               VerticalOptions="StartAndExpand">
+                                        </Label>
+                                        <Label Text="{Binding Description, StringFormat='Goal: {0}'}" 
+                                               FontFamily="Rubik-Regular.ttf#Rubik-Regular"
+                                               FontAttributes="Bold" 
+                                               Margin="30,3,0,0" 
+                                               Grid.Row="1"
+                                               FontSize="Small"
+                                               TextColor="Black"
+                                               VerticalOptions="StartAndExpand">
+                                        </Label>
+                                    
+                                    <Label Text="{Binding isReached}" Grid.Column="1" HorizontalOptions="EndAndExpand" Grid.RowSpan="2" Margin="20,0,7,0" VerticalOptions="CenterAndExpand" FontSize="Medium"/>
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

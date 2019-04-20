@@ -3,6 +3,9 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Andr
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\FFImageLoading.Forms.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\FFImageLoading.Forms.Platform.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\FFImageLoading.Platform.dll
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\FFImageLoading.Svg.Forms.dll
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\FFImageLoading.Svg.Platform.dll
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\FFImageLoading.Transformations.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\FormsViewGroup.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\IDO_Client.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\ImageCircle.Forms.Plugin.Abstractions.dll
@@ -14,6 +17,7 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Andr
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\Plugin.CurrentActivity.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\Plugin.Media.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\Plugin.Permissions.dll
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\SkiaSharp.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\System.Core.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\System.dll
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\android\assets\System.Numerics.dll

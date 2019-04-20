@@ -1,8 +1,11 @@
-﻿using IDO_Client.Controls;
+﻿using FFImageLoading.Forms;
+using IDO_Client.Controls;
 using IDO_Client.Models;
 using Newtonsoft.Json;
+using Plugin.Media;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,14 +25,18 @@ namespace IDO_Client.Tabs
         {
             try
             {
-
-
                 base.OnAppearing();
+                Name.Text = user.Nickname;
+                Followers.Text = user.Followers.Count.ToString();
+                Follows.Text = user.Follows.Count.ToString();
+                goals.Text = user.Goals.Count.ToString();
+                base.OnPropertyChanged();
                 Idid.IsCameraShowed = false;
+
             }
             catch
             {
-                DependencyService.Get<IMessage>().LongAlert("Can't Load Page");
+                DependencyService.Get<IMessage>().LongAlert("Can't load page.");
             }
         }
         public Home(User profile, bool IsTabPage = false)
@@ -37,19 +44,34 @@ namespace IDO_Client.Tabs
             isTabPage = IsTabPage;
             user = profile;
             InitializeComponent();
-            if (App.profile.Nickname.Equals(user.Nickname))
+            if (App.Profile.Nickname.Equals(user.Nickname))
             {
                 Follow.IsEnabled = false;
                 Follow.IsVisible = false;
 
             }
-            Name.BindingContext = user;
-            Follows.BindingContext = user;
-            Followers.BindingContext = user;
-            Name.SetBinding(Label.TextProperty, "Nickname");
-            Followers.SetBinding(Label.TextProperty, "Followers.Count");
-            Follows.SetBinding(Label.TextProperty, "Follows.Count");
-            if (App.profile.Follows.IndexOf(user.Nickname) != -1)
+            //Name.BindingContext = user;
+            //Follows.BindingContext = user;
+            //Followers.BindingContext = user;
+            //goals.BindingContext = user;
+            //Name.SetBinding(Label.TextProperty, "Nickname");
+            //Followers.SetBinding(Label.TextProperty, "Followers.Count");
+            //Follows.SetBinding(Label.TextProperty, "Follows.Count");
+            //goals.SetBinding(Label.TextProperty, "Goals.Count");
+
+            if (user.Avatar != null)
+            {
+                avatar.Source = App.server + "/" + user.Nickname + "/" + user.Avatar + "/download";
+                MiniImage.Source = App.server + "/" + user.Nickname + "/" + user.Avatar + "/download";
+            }
+            else
+            {
+                avatar.Source = "defaultavatar.jpg";
+                MiniImage.Source = "defaultavatar.jpg";
+            }
+            
+
+            if (App.Profile.Follows.IndexOf(user.Nickname) != -1)
             {
                 Follow.Text = "Unfollow";
             }
@@ -100,21 +122,21 @@ namespace IDO_Client.Tabs
         {
             try
             {
-                if (App.profile.Follows.IndexOf(user.Nickname) == -1)
+                if (App.Profile.Follows.IndexOf(user.Nickname) == -1)
                     using (HttpClient client = new HttpClient())
                     {
                         Dictionary<string, string> values = new Dictionary<string, string>()
-                    {
-                        { "nickname",App.profile.Nickname },
-                        { "password", App.profile.Password},
-                        { "follow", user.Nickname}
-                    };
+                            {
+                                { "nickname",App.Profile.Nickname },
+                                { "password", App.Profile.Password},
+                                { "follow", user.Nickname}
+                            };
                         var content = new FormUrlEncodedContent(values);
                         var responseReg = await client.PostAsync(App.server + "/api/accounts/follow", content);
 
                         if (responseReg.IsSuccessStatusCode)
                         {
-                            App.profile.Follows.Add(user.Nickname);
+                            App.Profile.Follows.Add(user.Nickname);
                             Follow.Text = "Unfollow";
                         }
                         else
@@ -124,16 +146,16 @@ namespace IDO_Client.Tabs
                     using (HttpClient client = new HttpClient())
                     {
                         Dictionary<string, string> values = new Dictionary<string, string>()
-                    {
-                        { "nickname",App.profile.Nickname },
-                        { "password", App.profile.Password},
-                        { "unfollow", user.Nickname}
-                    };
+                            {
+                                { "nickname",App.Profile.Nickname },
+                                { "password", App.Profile.Password},
+                                { "unfollow", user.Nickname}
+                            };
                         var content = new FormUrlEncodedContent(values);
                         var responseReg = await client.PostAsync(App.server + "/api/accounts/unfollow", content);
                         if (responseReg.IsSuccessStatusCode)
                         {
-                            App.profile.Follows.Remove(user.Nickname);
+                            App.Profile.Follows.Remove(user.Nickname);
                             Follow.Text = "Follow";
 
                         }
@@ -157,18 +179,66 @@ namespace IDO_Client.Tabs
             }
             catch
             {
+
             }
 
         }
 
         private void OnGoalsClicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Goals(user));
         }
 
-        private void OnChangeAvatar(object sender, EventArgs e)
+        private async void OnChangeAvatar(object sender, EventArgs e)
         {
+            if (isTabPage)
+                try
+                {
+                    byte[] buffer = null;
+                    using (var scope = new ActivityIndicatorScope(activityIndicator, true))
+                    using (HttpClient client = new HttpClient())
+                    {
+                        if (CrossMedia.Current.IsPickVideoSupported)
+                            using (var file = await CrossMedia.Current.PickPhotoAsync())
+                            {
+                                if (file == null)
+                                    return;
+                                using (var stream = file.GetStream())
+                                {
+                                    avatar.Source = "load.gif";
+                                    buffer = new byte[stream.Length];
+                                    await stream.ReadAsync(buffer, 0, buffer.Length);
+                                    avatar.Source = ImageSource.FromStream(() => new MemoryStream(buffer));
+                                    MiniImage.Source = avatar.Source;
+                                }
+                            }
+                        MultipartFormDataContent content = new MultipartFormDataContent();
+                        StringContent nickname = new StringContent(App.Profile.Nickname);
+                        StringContent password = new StringContent(App.Profile.Password);
+                        content.Add(nickname, "nickname");
+                        content.Add(password, "password");
+                        if (buffer == null)
+                            return;
+                        ByteArrayContent baContent = new ByteArrayContent(buffer);
+                        content.Add(baContent, "file", "IDID_PHOTO.jpg");
+                        var response = await client.PostAsync(App.server + "/avatar", content);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            buffer = null;
+                            DependencyService.Get<IMessage>().LongAlert("Succesfully uploaded!");
+                        }
+                        else
+                        {
+                            avatar.Source = "defaultavatar.jpg";
+                            DependencyService.Get<IMessage>().LongAlert("Cant upload avatar");
+                        }
 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine(ex.Message);
+                }
         }
     }
 }

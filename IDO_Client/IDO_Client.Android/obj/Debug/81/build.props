@@ -1,4 +1,4 @@
-BundleAssemblies=false
+BundleAssemblies=true
 AotAssemblies=false
 AndroidAotMode=
 ExplicitCrunch=False

@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="IDO_Client.Tabs.Follows"
              Title="Follows" Icon="follows.png"
              BackgroundColor="White"
@@ -10,24 +13,46 @@
         <StackLayout>
             <SearchBar Placeholder="Search . . ." TextChanged="OnSearchDataChanged" x:Name="searchBar"/>
             <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator"/>
-            <ListView x:Name="FollowsView" ItemTapped="OnItemTapped">
+            <ListView x:Name="FollowsView" ItemTapped="OnItemTapped"  HasUnevenRows="True" >
                 <ListView.ItemTemplate>
-                
+
                     <DataTemplate >
 
-                        <ViewCell>
-                            <Frame HasShadow="True" Padding="5,5,5,5"   HeightRequest="30"  CornerRadius="25">
+                        <ViewCell >
+                            <Frame HasShadow="True" Padding="5,5,5,5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="75"  CornerRadius="25">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
                                 <StackLayout Orientation="Horizontal">
-                                    
-                                    <Label Text="{Binding Nickname}" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" >
-                                        
-                                    </Label>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                        <Image Source="startpageimage.png" Margin="0,0,30,0" HorizontalOptions="End"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Nickname}" x:Name="nickname" 
+                                               FontFamily="Rubik-Bold.ttf#Rubik-Bold"
+                                               TextColor="Black" 
+                                               Margin="15,7,0,0" 
+                                               FontSize="Large"
+                                               VerticalOptions="StartAndExpand">
+                                        </Label>
+                                        <Label Text="{Binding Follows.Count, StringFormat='Follows: {0}'}" 
+                                               FontFamily="Rubik-Regular.ttf#Rubik-Regular"
+                                               FontAttributes="Bold" 
+                                               Margin="30,3,0,0" 
+                                               FontSize="Small"
+                                               TextColor="Black"
+                                               VerticalOptions="StartAndExpand">
+                                        </Label>
+                                        <Label Text="{Binding Followers.Count, StringFormat='Followers: {0}'}" 
+                                               FontFamily="Rubik-Regular.ttf#Rubik-Regular"
+                                               Margin="30,3,0,0"
+                                               TextColor="Black" 
+                                               FontSize="Small"
+                                               VerticalOptions="StartAndExpand">
+                                        </Label>
                                     </StackLayout>
+                                    <forms:CachedImage x:Name="MiniImage" HeightRequest="50"  BindingContextChanged="AvatarContxt_changed"  IsEnabled="{Binding ddd}" Margin="0,0,30,0" HorizontalOptions="EndAndExpand">
+                                        <forms:CachedImage.Transformations>
+                                            <fftransformations:CircleTransformation BorderSize="1" BorderHexColor="#ffa6c9"/>
+                                        </forms:CachedImage.Transformations>
+                                    </forms:CachedImage>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>

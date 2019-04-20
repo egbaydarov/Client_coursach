@@ -40,6 +40,29 @@
           "lib/monoandroid71/Plugin.Permissions.dll": {}
         }
       },
+      "SkiaSharp/1.60.0": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid/SkiaSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win7-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          }
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -451,6 +474,47 @@
           "lib/MonoAndroid10/FFImageLoading.Forms.dll": {}
         }
       },
+      "Xamarin.FFImageLoading.Svg/2.4.3.840": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.60.0",
+          "Xamarin.FFImageLoading": "2.4.3.840"
+        },
+        "frameworkAssemblies": [
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/MonoAndroid10/FFImageLoading.Svg.Platform.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/FFImageLoading.Svg.Platform.dll": {}
+        }
+      },
+      "Xamarin.FFImageLoading.Svg.Forms/2.4.3.840": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.FFImageLoading.Forms": "2.4.3.840",
+          "Xamarin.FFImageLoading.Svg": "2.4.3.840"
+        },
+        "compile": {
+          "lib/MonoAndroid10/FFImageLoading.Svg.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/FFImageLoading.Svg.Forms.dll": {}
+        }
+      },
+      "Xamarin.FFImageLoading.Transformations/2.4.3.840": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.3.840"
+        },
+        "compile": {
+          "lib/MonoAndroid10/FFImageLoading.Transformations.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/FFImageLoading.Transformations.dll": {}
+        }
+      },
       "Xamarin.Forms/3.6.0.293080": {
         "type": "package",
         "dependencies": {
@@ -487,7 +551,11 @@
           "Xam.Plugin.Media": "4.0.1.5",
           "Xam.Plugins.Forms.ImageCircle": "2.0.2",
           "Xamarin.Essentials": "1.1.0",
+          "Xamarin.FFImageLoading": "2.4.3.840",
           "Xamarin.FFImageLoading.Forms": "2.4.3.840",
+          "Xamarin.FFImageLoading.Svg": "2.4.3.840",
+          "Xamarin.FFImageLoading.Svg.Forms": "2.4.3.840",
+          "Xamarin.FFImageLoading.Transformations": "2.4.3.840",
           "Xamarin.Forms": "3.6.0.293080"
         },
         "compile": {
@@ -574,6 +642,51 @@
         "plugin.permissions.3.0.0.12.nupkg.sha512",
         "plugin.permissions.nuspec",
         "readme.txt"
+      ]
+    },
+    "SkiaSharp/1.60.0": {
+      "sha512": "HoSNIZH54rinevEhLUWdeclr+H/QdmOp252+Tt07HTXwQyvRl9eW32ga/X7T56wsR855SKprb0RcnBPRCzlqSA==",
+      "type": "package",
+      "path": "skiasharp/1.60.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net45/SkiaSharp.dll.config",
+        "build/net45/SkiaSharp.targets",
+        "lib/MonoAndroid/SkiaSharp.dll",
+        "lib/MonoAndroid/SkiaSharp.xml",
+        "lib/XamarinMac/SkiaSharp.dll",
+        "lib/XamarinMac/SkiaSharp.xml",
+        "lib/XamariniOS/SkiaSharp.dll",
+        "lib/XamariniOS/SkiaSharp.xml",
+        "lib/XamarintvOS/SkiaSharp.dll",
+        "lib/XamarintvOS/SkiaSharp.xml",
+        "lib/XamarinwatchOS/SkiaSharp.dll",
+        "lib/XamarinwatchOS/SkiaSharp.xml",
+        "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.dll.config",
+        "lib/net45/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.dll",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.xml",
+        "lib/uap10.0/SkiaSharp.dll",
+        "lib/uap10.0/SkiaSharp.xml",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win7-x64/native/libSkiaSharp.dll",
+        "runtimes/win7-x86/native/libSkiaSharp.dll",
+        "skiasharp.1.60.0.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
@@ -1276,6 +1389,102 @@
         "xamarin.ffimageloading.forms.nuspec"
       ]
     },
+    "Xamarin.FFImageLoading.Svg/2.4.3.840": {
+      "sha512": "X9LbSy+JlAHktTjONeUieTKvaeYZh2Xs0xWi7g7aZnYVmXOVQ2uKFnykx5qEpqy3IrJHypwamJHecss1WlRHdQ==",
+      "type": "package",
+      "path": "xamarin.ffimageloading.svg/2.4.3.840",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/FFImageLoading.Svg.Platform.dll",
+        "lib/MonoAndroid10/FFImageLoading.Svg.Platform.pdb",
+        "lib/MonoAndroid10/FFImageLoading.Svg.Platform.xml",
+        "lib/Xamarin.Mac20/FFImageLoading.Svg.Platform.dll",
+        "lib/Xamarin.Mac20/FFImageLoading.Svg.Platform.pdb",
+        "lib/Xamarin.Mac20/FFImageLoading.Svg.Platform.xml",
+        "lib/Xamarin.iOS10/FFImageLoading.Svg.Platform.dll",
+        "lib/Xamarin.iOS10/FFImageLoading.Svg.Platform.pdb",
+        "lib/Xamarin.iOS10/FFImageLoading.Svg.Platform.xml",
+        "lib/netstandard1.0/FFImageLoading.Svg.Platform.dll",
+        "lib/netstandard1.0/FFImageLoading.Svg.Platform.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Svg.Platform.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Svg.Platform.xml",
+        "lib/tizen40/FFImageLoading.Svg.Platform.dll",
+        "lib/tizen40/FFImageLoading.Svg.Platform.pdb",
+        "lib/tizen40/FFImageLoading.Svg.Platform.xml",
+        "lib/uap/FFImageLoading.Svg.Platform.dll",
+        "lib/uap/FFImageLoading.Svg.Platform.pdb",
+        "lib/uap/FFImageLoading.Svg.Platform.xml",
+        "xamarin.ffimageloading.svg.2.4.3.840.nupkg.sha512",
+        "xamarin.ffimageloading.svg.nuspec"
+      ]
+    },
+    "Xamarin.FFImageLoading.Svg.Forms/2.4.3.840": {
+      "sha512": "k3GbR88+UB3EZHfjUxJJYEMnKl/m9Gool38rHBxNxV5P/n0cf9MsRyWDUiwe4eiSJFAexo0f/CrJygsfs9mXbQ==",
+      "type": "package",
+      "path": "xamarin.ffimageloading.svg.forms/2.4.3.840",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/FFImageLoading.Svg.Forms.dll",
+        "lib/MonoAndroid10/FFImageLoading.Svg.Forms.pdb",
+        "lib/MonoAndroid10/FFImageLoading.Svg.Forms.xml",
+        "lib/Xamarin.Mac20/FFImageLoading.Svg.Forms.dll",
+        "lib/Xamarin.Mac20/FFImageLoading.Svg.Forms.pdb",
+        "lib/Xamarin.Mac20/FFImageLoading.Svg.Forms.xml",
+        "lib/Xamarin.iOS10/FFImageLoading.Svg.Forms.dll",
+        "lib/Xamarin.iOS10/FFImageLoading.Svg.Forms.pdb",
+        "lib/Xamarin.iOS10/FFImageLoading.Svg.Forms.xml",
+        "lib/netstandard1.0/FFImageLoading.Svg.Forms.dll",
+        "lib/netstandard1.0/FFImageLoading.Svg.Forms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Svg.Forms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Svg.Forms.xml",
+        "lib/tizen40/FFImageLoading.Svg.Forms.dll",
+        "lib/tizen40/FFImageLoading.Svg.Forms.pdb",
+        "lib/tizen40/FFImageLoading.Svg.Forms.xml",
+        "lib/uap/FFImageLoading.Svg.Forms.dll",
+        "lib/uap/FFImageLoading.Svg.Forms.pdb",
+        "lib/uap/FFImageLoading.Svg.Forms.xml",
+        "xamarin.ffimageloading.svg.forms.2.4.3.840.nupkg.sha512",
+        "xamarin.ffimageloading.svg.forms.nuspec"
+      ]
+    },
+    "Xamarin.FFImageLoading.Transformations/2.4.3.840": {
+      "sha512": "U5U4xjqhO4cDv4jies8M1s7voKWt4jvQ9VSNSCn+6sUppEj3yq47comWMevJPeyNwiUdydURhs7aG+EXOrD55Q==",
+      "type": "package",
+      "path": "xamarin.ffimageloading.transformations/2.4.3.840",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/FFImageLoading.Transformations.dll",
+        "lib/MonoAndroid10/FFImageLoading.Transformations.pdb",
+        "lib/MonoAndroid10/FFImageLoading.Transformations.xml",
+        "lib/Xamarin.Mac20/FFImageLoading.Transformations.dll",
+        "lib/Xamarin.Mac20/FFImageLoading.Transformations.pdb",
+        "lib/Xamarin.Mac20/FFImageLoading.Transformations.xml",
+        "lib/Xamarin.iOS10/FFImageLoading.Transformations.dll",
+        "lib/Xamarin.iOS10/FFImageLoading.Transformations.pdb",
+        "lib/Xamarin.iOS10/FFImageLoading.Transformations.xml",
+        "lib/netstandard1.0/FFImageLoading.Transformations.dll",
+        "lib/netstandard1.0/FFImageLoading.Transformations.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Transformations.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/FFImageLoading.Transformations.xml",
+        "lib/tizen40/FFImageLoading.Transformations.dll",
+        "lib/tizen40/FFImageLoading.Transformations.pdb",
+        "lib/tizen40/FFImageLoading.Transformations.xml",
+        "lib/uap/FFImageLoading.Transformations.dll",
+        "lib/uap/FFImageLoading.Transformations.pdb",
+        "lib/uap/FFImageLoading.Transformations.xml",
+        "lib/win81/FFImageLoading.Transformations.dll",
+        "lib/win81/FFImageLoading.Transformations.pdb",
+        "lib/win81/FFImageLoading.Transformations.xml",
+        "lib/wpa81/FFImageLoading.Transformations.dll",
+        "lib/wpa81/FFImageLoading.Transformations.pdb",
+        "lib/wpa81/FFImageLoading.Transformations.xml",
+        "xamarin.ffimageloading.transformations.2.4.3.840.nupkg.sha512",
+        "xamarin.ffimageloading.transformations.nuspec"
+      ]
+    },
     "Xamarin.Forms/3.6.0.293080": {
       "sha512": "5o6pS3kbFwWDiTpywz0UasLwn9Ay5/1eGH8JWXBV0N2lDkZauOgTZaMIE/Rdjz2bLhMturwzI1/DFuNxdSidFw==",
       "type": "package",
@@ -1459,7 +1668,11 @@
       "Xamarin.Android.Support.v7.CardView >= 28.0.0.1",
       "Xamarin.Android.Support.v7.MediaRouter >= 28.0.0.1",
       "Xamarin.Essentials >= 1.1.0",
+      "Xamarin.FFImageLoading >= 2.4.3.840",
       "Xamarin.FFImageLoading.Forms >= 2.4.3.840",
+      "Xamarin.FFImageLoading.Svg >= 2.4.3.840",
+      "Xamarin.FFImageLoading.Svg.Forms >= 2.4.3.840",
+      "Xamarin.FFImageLoading.Transformations >= 2.4.3.840",
       "Xamarin.Forms >= 3.6.0.293080"
     ]
   },
@@ -1541,7 +1754,23 @@
             "target": "Package",
             "version": "[1.1.0, )"
           },
+          "Xamarin.FFImageLoading": {
+            "target": "Package",
+            "version": "[2.4.3.840, )"
+          },
           "Xamarin.FFImageLoading.Forms": {
+            "target": "Package",
+            "version": "[2.4.3.840, )"
+          },
+          "Xamarin.FFImageLoading.Svg": {
+            "target": "Package",
+            "version": "[2.4.3.840, )"
+          },
+          "Xamarin.FFImageLoading.Svg.Forms": {
+            "target": "Package",
+            "version": "[2.4.3.840, )"
+          },
+          "Xamarin.FFImageLoading.Transformations": {
             "target": "Package",
             "version": "[2.4.3.840, )"
           },

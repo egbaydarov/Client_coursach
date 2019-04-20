@@ -22,54 +22,46 @@ namespace IDO_Client.Tabs
         bool isFeedPage = false;
         protected async override void OnAppearing()
         {
+            Idid.IsCameraShowed = false;
             base.OnAppearing();
             var Data = new ObservableCollection<Data>();
             var notes = new List<Note>();
             if (isFeedPage)
             {
-                foreach (var nick in App.profile.Follows)
-                    notes.AddRange(await GetUserNotes(nick, 0, 0));
+                foreach (var nick in App.Profile.Follows)
+                    notes.AddRange(await GetUserNotes(nick));
             }
             else
             {
-                notes.AddRange(await GetUserNotes(nickname, 0, 0));
+                notes.AddRange(await GetUserNotes(nickname));
             }
-
-           
-                FeedView.ItemsSource = Data;
-                notes.Sort((a, b) => -a.ImageReference.CompareTo(b.ImageReference));
-                foreach (var i in notes)
-                    Data.Add(CreateDataModelFromNote(i, i.nickname));
+            FeedView.ItemsSource = Data;
+            notes.Sort((a, b) => -a.ImageReference.CompareTo(b.ImageReference));
+            foreach (var i in notes)
+                Data.Add(await CreateDataModelFromNote(i, i.nickname));
             
-
-
-            Idid.IsCameraShowed = false;
         }
         public Feed(string nick, bool isfeedpage = false)
         {
             isFeedPage = isfeedpage;
             nickname = nick;
             InitializeComponent();
-            _listView = new ListView
-            {
-                HasUnevenRows = true,
-                ItemTemplate = new DataTemplate(typeof(NoteCell)),
-
-            };
-            //FeedView = _listView;
             
+            //FeedView = _listView;
+
         }
-        public async Task<List<Note>> GetUserNotes(string nickname, int from, int to)
+        public async Task<List<Note>> GetUserNotes(string nickname)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
                     var response = await client.GetAsync(App.server + "/" + nickname + "/notes");
-                    var notesdataresponse = JsonConvert.DeserializeObject<NotesDataResponse>(await response.Content.ReadAsStringAsync());
-                    if (!notesdataresponse.IsOK())
-                        throw new ApplicationException("Oops, Can't load notes");
-                    List<Note> notes = notesdataresponse.Notes;
+                    if (!response.IsSuccessStatusCode)
+                        throw new ApplicationException("No connection to server");
+
+                    var notesdataresponse = JsonConvert.DeserializeObject<List<Note>>(await response.Content.ReadAsStringAsync());
+                    List<Note> notes = notesdataresponse;
                     for (int i = 0; i < notes.Count; i++)
                         notes[i].nickname = nickname;
                     return notes;
@@ -81,7 +73,7 @@ namespace IDO_Client.Tabs
                 return new List<Note>();
             }
         }
-        public Data CreateDataModelFromNote(Note note, string nickname)
+        public async Task<Data> CreateDataModelFromNote(Note note, string nickname)
         {
 
             try
@@ -92,7 +84,8 @@ namespace IDO_Client.Tabs
                     //if (!imageresponse.IsSuccessStatusCode)
                     //    throw new ApplicationException("Oops, Can't Download Image");
                     //ImageSource image = ImageSource.FromStream(()=> new MemoryStream((byte[])(object)imageresponse.Content));
-
+                    string avName = (await Follows.GetUserData(nickname)).Avatar;
+                    string avRef = avName != null ? $"{App.server}/{nickname}/{avName}/download": "defaultavatar.png";
                     var data = new Data()
                     {
                         Description = note.Description,
@@ -100,7 +93,8 @@ namespace IDO_Client.Tabs
                         Name = nickname,
                         Image = $"{App.server}/{nickname}/{note.ImageReference}/download",
                         Lukasers = note.Lukasers,
-                        ImageReference = note.ImageReference
+                        ImageReference = note.ImageReference,
+                        AvatarReference = avRef
                     };
                     return data;
                 }
@@ -110,14 +104,6 @@ namespace IDO_Client.Tabs
                 DependencyService.Get<IMessage>().ShortAlert(Ex.Message);
                 return new Data();
             }
-        }
-
-
-        
-
-        private void OnLukasedImage(object sender, EventArgs e)
-        {
-          
         }
 
         private void OnItemTapped(object sender, ItemTappedEventArgs e)

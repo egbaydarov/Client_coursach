@@ -31,7 +31,7 @@ namespace IDO_Client.Tabs
             App.Current.Properties.Remove("password");
             App.Current.Properties.Remove("nickname");
             App.Current.MainPage = new CustomNavigationPage(new Login());
-            App.profile = null;
+            App.Profile = null;
         }
 
         private void Change_clicked(object sender, EventArgs e)
@@ -42,12 +42,13 @@ namespace IDO_Client.Tabs
             }
         }
 
-        private void OnSaveGallery(object sender, ToggledEventArgs e)
+        private async void OnSaveGallery(object sender, ToggledEventArgs e)
         {
             if (App.Current.Properties.Keys.Contains("IsSaveToGallery"))
                 App.Current.Properties["IsSaveToGallery"] = SaveGalarySwitcher.IsToggled;
             else
                 App.Current.Properties.Add("IsSaveToGallery", SaveGalarySwitcher.IsToggled);
+            await App.Current.SavePropertiesAsync();
         }
     }
 }

@@ -16,10 +16,10 @@ namespace IDO_Client
     public partial class App : Application
     {
         public const string server = @"http://192.168.1.39:44374";
-        //public const string server = @"https://idoapi20190409055028.azurewebsites.net/";
+        //public const string server = @"https://idoapi20190414023717.azurewebsites.net";
         public const string Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzzxcvbnm1234567890<>_-";
 
-        public static User profile;
+        public static User Profile;
         public static AppSettings CurrentAppSettings { get; set; }
 
 
@@ -42,30 +42,31 @@ namespace IDO_Client
             {
                 using (var client = new HttpClient())
                 {
-                    ServicePointManager.ServerCertificateValidationCallback += (sendere, cert, chain, sslPolicyErrors) => true;
-                    var responseJS = await client.GetAsync(server+ "/account" + "/" + login + "/" + pass);
-                    string content = await responseJS.Content.ReadAsStringAsync();
-                    var response = JsonConvert.DeserializeObject<AccountDataResponse>(content);
-                    
-                    if (response.IsOK())
-                    {
-                        profile = response.Data;
-                        object nick;
-                        object passs;
-                        if (!App.Current.Properties.TryGetValue("nickname", out nick) && !App.Current.Properties.TryGetValue("password", out passs))
-                        {
-                            App.Current.Properties.Add("nickname", profile.Nickname);
-                            App.Current.Properties.Add("password", profile.Password);
-                        }
-                        await App.Current.SavePropertiesAsync();
-                        DependencyService.Get<IMessage>().ShortAlert("Succesfull!");
-                        return true;
-                    }
-                    else
+                    var responseJS = await client.GetAsync(server + "/account" + "/" + login + "/" + pass);
+
+                    if (!responseJS.IsSuccessStatusCode)
                     {
                         DependencyService.Get<IMessage>().ShortAlert("Oops!");
                         return false;
                     }
+                    string content = await responseJS.Content.ReadAsStringAsync();
+                    var response = JsonConvert.DeserializeObject<User>(content);
+
+                    object nick;
+                    object passs;
+                    if (!App.Current.Properties.TryGetValue("nickname", out nick) && !App.Current.Properties.TryGetValue("password", out passs))
+                    {
+                        App.Current.Properties.Add("nickname", login);
+                        App.Current.Properties.Add("password", pass);
+                    }
+                    Profile = response;
+                    Current.Properties["nickname"] = login;
+                    Current.Properties["password"] = pass;
+                    await App.Current.SavePropertiesAsync();
+                    
+                    Profile.Password = pass;
+                    DependencyService.Get<IMessage>().ShortAlert("Succesfull!");
+                    return true;
                 }
             }
             catch (Exception e)
@@ -81,15 +82,11 @@ namespace IDO_Client
             object pass;
             if (App.Current.Properties.TryGetValue("nickname", out nick) && App.Current.Properties.TryGetValue("password", out pass))
             {
-
                 bool isLogined = await App.TryLogin(nick as string, pass as string);
                 if (isLogined)
-                {
                     MainPage = new MainPage();
-                }
                 else
                     MainPage = new CustomNavigationPage(new Login());
-
             }
             else
                 MainPage = new CustomNavigationPage(new Login());

@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Plugin.CurrentActivity;
 using ImageCircle.Forms.Plugin.Droid;
+using FFImageLoading;
 
 namespace IDO_Client.Droid
 {
@@ -19,6 +20,8 @@ namespace IDO_Client.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             base.Window.RequestFeature(WindowFeatures.ActionBar);
             RequestedOrientation = ScreenOrientation.Portrait;
             // Name of the MainActivity theme you had there before.
@@ -27,15 +30,14 @@ namespace IDO_Client.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            var ignore = typeof(FFImageLoading.Svg.Forms.SvgCachedImage);
             base.OnCreate(savedInstanceState);
-
+            Window.SetStatusBarColor(Android.Graphics.Color.Black);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             ImageCircleRenderer.Init();
             LoadApplication(new App());
 
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
 
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

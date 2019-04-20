@@ -21,16 +21,23 @@ namespace IDO_Client
         public MainPage()
         {
             InitializeComponent();
-            var navigationFollowsPage = new NavigationPage(new Follows(App.profile.Nickname));
+            var navigationFollowsPage = new NavigationPage(new Follows(App.Profile.Nickname));
             navigationFollowsPage.Icon = "follows.png";
             navigationFollowsPage.Title = "Follows";
             navigationFollowsPage.BarBackgroundColor = Color.White;
-            var navigationHomePage = new NavigationPage(new Home(App.profile, true));
+
+            var navigationHomePage = new NavigationPage(new Home(App.Profile, true));
             navigationHomePage.Icon = "account.png";
             navigationHomePage.Title = "Home";
             navigationHomePage.BarBackgroundColor = Color.White;
+
+            var navigationFeedPage = new NavigationPage(new Feed(App.Profile.Nickname, true));
+            navigationFeedPage.Icon = "feed.png";
+            navigationFeedPage.Title = "Feed";
+            navigationFeedPage.BarBackgroundColor = Color.White;
+
             this.Children.Add(navigationFollowsPage);
-            this.Children.Add(new Feed(App.profile.Nickname, true));
+            this.Children.Add(navigationFeedPage);
             this.Children.Add(new Idid());
             this.Children.Add(navigationHomePage);
             this.Children.Add(new Settings());

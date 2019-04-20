@@ -1,5 +1,7 @@
-﻿using IDO_Client.Controls;
+﻿using FFImageLoading.Forms;
+using IDO_Client.Controls;
 using IDO_Client.Models;
+using ImageCircle.Forms.Plugin.Abstractions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -113,6 +115,14 @@ namespace IDO_Client.Tabs
         {
             if (e.Item == null) return;
             if (sender is ListView lv) lv.SelectedItem = null;
+        }
+
+        private void AvatarContxt_changed(object sender, EventArgs e)
+        {
+            var item = ( sender as CachedImage).BindingContext as User;
+            var image = sender as CachedImage;
+            if(item != null)
+            image.Source = item.Avatar != null ? $"{App.server}/{item.Nickname}/{item.Avatar}/download" : "defaultavatar.jpg" ;
         }
     }
 }

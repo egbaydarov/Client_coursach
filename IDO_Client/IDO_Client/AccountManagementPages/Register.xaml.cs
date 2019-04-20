@@ -37,14 +37,15 @@ namespace IDO_Client.AccountManagementPages
                         if (!PassFirst.Text.Equals(PassSecond.Text))
                             throw new ApplicationException("Passwords should be the same.");
                         Dictionary<string, string> values = new Dictionary<string, string>()
-                    {
-                        { "nickname",Nick.Text },
-                        { "password", PassFirst.Text}
-                    };
+                        {
+                            { "nickname",Nick.Text },
+                            { "password", PassFirst.Text}
+                        };
                         var content = new FormUrlEncodedContent(values);
-                        var responseReg = await client.PostAsync(App.server + "/api" + "/accounts", content);
-                        var response = JsonConvert.DeserializeObject<SimpleResponse>(await responseReg.Content.ReadAsStringAsync());
-                        if (response.IsOK())
+                        var response = await client.PostAsync(App.server + "/api" + "/accounts", content);
+                        if (!response.IsSuccessStatusCode)
+                            DependencyService.Get<IMessage>().LongAlert("Oops, Cant create user.");
+                        else
                         {
                             if (await App.TryLogin(Nick.Text, PassFirst.Text))
                             {
@@ -54,10 +55,6 @@ namespace IDO_Client.AccountManagementPages
                             {
                                 DependencyService.Get<IMessage>().LongAlert("Soory!, Can't login");
                             }
-                        }
-                        else
-                        {
-                            DependencyService.Get<IMessage>().LongAlert(response.Message);
                         }
                     }
                     else
@@ -75,7 +72,7 @@ namespace IDO_Client.AccountManagementPages
         private void OnIncorrectLogin(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)(sender);
-            if (entry.Text.IndexOf(' ') != -1 || entry.Text.Length < 6 || !entry.Text.IsStringConsistOf(App.Alphabet))
+            if (entry.Text.IndexOf(' ') != -1 || entry.Text.Length < 4 || !entry.Text.IsStringConsistOf(App.Alphabet))
             {
                 entry.BackgroundColor = Color.FromHex("#ff6d6d");
                 CorrectDataKey = false;
@@ -90,7 +87,7 @@ namespace IDO_Client.AccountManagementPages
         private void OnIncorrectPass(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)(sender);
-            if (entry.Text.IndexOf(' ') != -1 || entry.Text.Length < 6 || entry.Text.IndexOfAny("!@#$%^&*()".ToCharArray()) == -1 || !entry.Text.IsStringConsistOf(App.Alphabet + "!@#$%^&*()" + "1234567890") || entry.Text.IndexOfAny("1234567890".ToCharArray()) == -1)
+            if (entry.Text.IndexOf(' ') != -1 || entry.Text.Length < 6  || !entry.Text.IsStringConsistOf(App.Alphabet + "!@#$%^&*()" + "1234567890"))
             {
                 entry.BackgroundColor = Color.FromHex("#ff6d6d");
                 CorrectDataKey = false;

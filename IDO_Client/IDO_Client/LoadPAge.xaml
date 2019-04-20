@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="IDO_Client.LoadPage"
              BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
-            
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <forms:CachedImage Source="load.gif" WidthRequest="300" HeightRequest="300"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace IDO_Client.Models
             Password = password;
             Follows = new List<string>();
             Followers = new List<string>();
+            Goals = new List<Goal>();
 
         }
 
@@ -37,5 +39,7 @@ namespace IDO_Client.Models
 
         [JsonProperty(PropertyName = "followers")]
         public List<string> Followers { get; set; }
+        [JsonProperty(PropertyName = "goals")]
+        public List<Goal> Goals { get; set; }
     }
 }

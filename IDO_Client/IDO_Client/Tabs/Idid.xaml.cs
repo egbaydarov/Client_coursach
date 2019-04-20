@@ -63,36 +63,42 @@ namespace IDO_Client.Tabs
             
         }
 
-        private async void Send_Clicked(object sender, EventArgs e)
+        private void Send_Clicked(object sender, EventArgs e)
         {
             try
             {
                 if (String.IsNullOrWhiteSpace(Description.Text) || buffer == null)
                     throw new ApplicationException("Oops!, Your forgot about decription or image");
 
+                byte[] image = new byte[buffer.Length];
+                buffer.CopyTo(image, 0);
+
+                buffer = null;
+                Description.Text = "";
+                PhotoImage.Source = "chooseimage.png";
+
+
+
                 using (var scope = new ActivityIndicatorScope(activityIndicator, true))
                 using (HttpClient client = new HttpClient())
                 {
                     MultipartFormDataContent content = new MultipartFormDataContent();
-                    StringContent nickname = new StringContent(App.profile.Nickname);
-                    StringContent password = new StringContent(App.profile.Password);
+                    StringContent nickname = new StringContent(App.Profile.Nickname);
+                    StringContent password = new StringContent(App.Profile.Password);
                     content.Add(nickname, "nickname");
                     content.Add(password, "password");
                     content.Add(new StringContent(Description.Text), "description");
-                    ByteArrayContent baContent = new ByteArrayContent(buffer);
+                    ByteArrayContent baContent = new ByteArrayContent(image);
                     content.Add(baContent, "file", "IDID_PHOTO.jpg");
-                    var response = await client.PutAsync(App.server + "/api/contents", content);
-                    var Dimpleresp = JsonConvert.DeserializeObject<SimpleResponse>(await response.Content.ReadAsStringAsync());
-                    if (Dimpleresp.IsOK())
+                    var response = client.PutAsync(App.server + "/api/contents", content);
+                    response.Wait();
+                    if (response.Result.IsSuccessStatusCode)
                     {
-                        buffer = null;
-                        Description.Text = "";
-                        PhotoImage.Source = "chooseimage.png";
                         DependencyService.Get<IMessage>().LongAlert("Succesfully uploaded!");
                     }
                     else
                     {
-                        DependencyService.Get<IMessage>().LongAlert(Dimpleresp.Message);
+                        DependencyService.Get<IMessage>().LongAlert("Cant upload achievement");
                     }
 
                     

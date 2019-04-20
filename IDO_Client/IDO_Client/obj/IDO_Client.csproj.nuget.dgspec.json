@@ -60,7 +60,23 @@
               "target": "Package",
               "version": "[1.1.0, )"
             },
+            "Xamarin.FFImageLoading": {
+              "target": "Package",
+              "version": "[2.4.3.840, )"
+            },
             "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.3.840, )"
+            },
+            "Xamarin.FFImageLoading.Svg": {
+              "target": "Package",
+              "version": "[2.4.3.840, )"
+            },
+            "Xamarin.FFImageLoading.Svg.Forms": {
+              "target": "Package",
+              "version": "[2.4.3.840, )"
+            },
+            "Xamarin.FFImageLoading.Transformations": {
               "target": "Package",
               "version": "[2.4.3.840, )"
             },

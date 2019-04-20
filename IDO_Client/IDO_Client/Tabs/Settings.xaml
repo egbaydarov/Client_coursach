@@ -21,7 +21,7 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Change_clicked" NumberOfTapsRequired="1"/>
                         </StackLayout.GestureRecognizers>
-                        <Label Text="Save photos to the gallery" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Save photos to the gallery" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Small"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                             <Switch x:Name="SaveGalarySwitcher" Toggled="OnSaveGallery"/>
                         </StackLayout>
@@ -32,7 +32,7 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Change_clicked" NumberOfTapsRequired="1"/>
                         </StackLayout.GestureRecognizers>
-                        <Label Text="Change Nickname or Password" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Change Nickname or Password" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Small"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                             <Image Source="settings.png" Margin="0,0,30,0" HorizontalOptions="End"/>
                         </StackLayout>
