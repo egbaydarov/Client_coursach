@@ -70,7 +70,7 @@ namespace IDO_Client.Controls
             FontAttributes = FontAttributes.Bold,
             FontSize = size
         };
-        Label discriptionLabel = new Label()
+        Label descriptionLabel = new Label()
         {
             HeightRequest = size * 12,
             WidthRequest = size * 18,
@@ -135,7 +135,7 @@ namespace IDO_Client.Controls
 
             achievementImage = new CachedImage()
             {
-                LoadingPlaceholder = "load.gif",
+                LoadingPlaceholder = "loadAch.gif",
                 CacheDuration = new TimeSpan(0, 0, 30, 0),
                 LoadingDelay = 50,
                 Transformations = new List<ITransformation>()
@@ -146,7 +146,6 @@ namespace IDO_Client.Controls
                 Aspect = Aspect.AspectFill,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
-
             var lukasRecognizer = new TapGestureRecognizer { NumberOfTapsRequired = 2};
             var lukasRecognizerSingle = new TapGestureRecognizer { NumberOfTapsRequired = 1};
             lukasRecognizer.Tapped += OnLukased;
@@ -154,6 +153,9 @@ namespace IDO_Client.Controls
             achievementImage.GestureRecognizers.Add(lukasRecognizer);
             respectIcon.GestureRecognizers.Add(lukasRecognizerSingle);
 
+            var goToPostRecognizer = new TapGestureRecognizer { NumberOfTapsRequired = 1 };
+            goToPostRecognizer.Tapped += OnPostTapped;
+            achievementImage.GestureRecognizers.Add(goToPostRecognizer);
 
             var OnProfileClicked = new TapGestureRecognizer { NumberOfTapsRequired = 1};
             OnProfileClicked.Tapped += OnProfileClickedHandler;
@@ -216,7 +218,7 @@ namespace IDO_Client.Controls
             var imageSL = new StackLayout() { HeightRequest = size*20, IsClippedToBounds = true };
             imageSL.Children.Add(achievementImage);
             mainGrid.Children.Add(imageSL, 0, 2);
-            mainGrid.Children.Add(discriptionLabel, 0, 2);
+            mainGrid.Children.Add(descriptionLabel, 0, 2);
             mainGrid.Children.Add(lowerSl, 0, 3);
             userAvatar.Source = "loading.png";
 
@@ -226,12 +228,15 @@ namespace IDO_Client.Controls
             var goalAdd = new TapGestureRecognizer { NumberOfTapsRequired = 1 };
             goalAdd.Tapped += OnGoalsAdd_Clicked;
             additionOptionsImage.GestureRecognizers.Add(goalAdd);
-            //achievementImage.Source = "loading.png";
-            //achievementImage.SetBinding(CachedImage.SourceProperty, "Image");
 
 
             View = mainGrid;
 
+        }
+
+        private async  void OnPostTapped(object sender, EventArgs e)
+        {
+            await (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.PushAsync(new Post(BindingContext as Data));
         }
 
         private async void OnProfileClickedHandler(object sender, EventArgs e)
@@ -271,7 +276,7 @@ namespace IDO_Client.Controls
             {
                 return;
             }
-            achievementImage.Source = $"{App.server}/{item.Name}/{item.ImageReference}/download";
+            achievementImage.Source = item.Image;
             string[] postDateArr = item.ImageReference.Split('.')[0].Split('-');
             try
             {
@@ -283,7 +288,7 @@ namespace IDO_Client.Controls
             }
             userAvatar.Source = item.AvatarReference;
             int discriptionBound = item.Description.Length < 43 ? item.Description.Length : 43;
-            discriptionLabel.Text = item.Description.Substring(0, discriptionBound) + " . . .";
+            descriptionLabel.Text = item.Description.Substring(0, discriptionBound) + " . . .";
             respectIcon.Source = item.Lukasers.IndexOf(App.Profile.Nickname) != -1 ? "startpageimage.png" : "unliked.png";
             progressLabel.Text = $" {item.Lukasers.Count} people think that it's cool";
         }

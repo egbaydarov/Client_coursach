@@ -8,13 +8,14 @@ namespace IDO_Client.Models
 {
     public class Note
     {
-        public Note(string description, string imageReference, List<string> lukasers, int lukascount = 0,string nick = null)
+        public Note(string description, string imageReference, List<string> lukasers, List<string> eximages = null, int lukascount = 0,string nick = null)
         {
             Description = description;
             ImageReference = imageReference;
             LukasCount = lukascount;
             Lukasers = lukasers;
             nickname = nick;
+            ExImages = eximages;
 
         }
         public string nickname;
@@ -29,6 +30,9 @@ namespace IDO_Client.Models
 
         [JsonProperty(PropertyName = "lukasers")]
         public List<string> Lukasers { get; set; }
+
+        [JsonProperty(PropertyName = "eximages")]
+        public List<string> ExImages { get; set; }
 
     }
 }

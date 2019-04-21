@@ -45,7 +45,6 @@ namespace IDO_Client.Tabs
                     items.Add(await GetUserData(nick));
                 }
                 
-                Idid.IsCameraShowed = false;
             }
             catch
             {

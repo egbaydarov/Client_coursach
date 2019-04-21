@@ -22,7 +22,6 @@ namespace IDO_Client.Tabs
         bool isFeedPage = false;
         protected async override void OnAppearing()
         {
-            Idid.IsCameraShowed = false;
             base.OnAppearing();
             var Data = new ObservableCollection<Data>();
             var notes = new List<Note>();
@@ -94,8 +93,11 @@ namespace IDO_Client.Tabs
                         Image = $"{App.server}/{nickname}/{note.ImageReference}/download",
                         Lukasers = note.Lukasers,
                         ImageReference = note.ImageReference,
-                        AvatarReference = avRef
+                        AvatarReference = avRef,
+                        ExImages = new List<string>()
                     };
+                    foreach (var i in note.ExImages)
+                        data.ExImages.Add($"{App.server}/{nickname}/{i}/download");
                     return data;
                 }
             }

@@ -31,7 +31,6 @@ namespace IDO_Client.Tabs
                 Follows.Text = user.Follows.Count.ToString();
                 goals.Text = user.Goals.Count.ToString();
                 base.OnPropertyChanged();
-                Idid.IsCameraShowed = false;
 
             }
             catch

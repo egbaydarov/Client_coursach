@@ -9,34 +9,49 @@
              >
 
     <ContentPage.Content >
-        <Grid RowSpacing="10" >
+        <Grid RowSpacing="5" >
             <Grid.RowDefinitions >
                 <RowDefinition Height="40*" />
-                <RowDefinition Height="1*" />
                 <RowDefinition Height="20*" />
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <forms:CachedImage x:Name="PhotoImage" Grid.Row="0"  Source="chooseimage.png" LoadingPlaceholder="load.gif" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Aspect="AspectFill">
-                <forms:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ChangeImage_clicked"/>
-                </forms:CachedImage.GestureRecognizers>
-            </forms:CachedImage>
-            <!--<Image  Grid.Row="0"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Source="frame.png" Aspect="Fill"/>-->
+            <ListView x:Name="ImageView" HasUnevenRows="True" ItemTapped="OnItemTapped" CachingStrategy="RecycleElement"/>
 
-            <controlges:BorderlessEditor Grid.Row="2" x:Name="Description" BackgroundColor="WhiteSmoke" HeightRequest="70" Placeholder="Describe your achievement. . ." />
 
-            <Frame HasShadow="True" BackgroundColor="LightPink" Grid.Row="3" Padding="5,5,5,5" HeightRequest="30"  CornerRadius="25">
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Send_Clicked" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
-                    <Label Text="Post Achievement" FontAttributes="Bold" TextColor="Black" Margin="30,0,0,0" FontSize="Medium"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator" />
-                    </StackLayout>
+            <StackLayout  Grid.Row="1">
+                <StackLayout  Orientation="Horizontal" HeightRequest="35" HorizontalOptions="FillAndExpand">
+                    <ActivityIndicator  HorizontalOptions="StartAndExpand" IsVisible="False" x:Name="activityIndicator" />
+
+                    <forms:CachedImage Source="camera.png" DownsampleToViewSize="True"  HorizontalOptions="CenterAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCameraTapped" NumberOfTapsRequired="1"/>
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                    <forms:CachedImage Source="addgoal.png" DownsampleToViewSize="True"  HorizontalOptions="CenterAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAddImageTapped" NumberOfTapsRequired="1"/>
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                    <forms:CachedImage Source="minus.png" DownsampleToViewSize="True"   HorizontalOptions="CenterAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnRemoveImageTapped" NumberOfTapsRequired="1"/>
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                    <forms:CachedImage Source="send.png" Margin="2" DownsampleToViewSize="True" HorizontalOptions="EndAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSendTapped" NumberOfTapsRequired="1" />
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+                    
                 </StackLayout>
-            </Frame>
+                
+                <Frame HasShadow="True" VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="6"  CornerRadius="25">
+                    <controlges:BorderlessEditor  x:Name="Description"  BackgroundColor="White" Placeholder="Describe your achievement. . ." />
+                </Frame>
+                
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

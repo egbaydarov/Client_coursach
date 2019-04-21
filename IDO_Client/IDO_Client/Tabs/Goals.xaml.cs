@@ -19,7 +19,6 @@ namespace IDO_Client.Tabs
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Idid.IsCameraShowed = false;
             try
             {
                 ObservableCollection<Goal> items = new ObservableCollection<Goal>();

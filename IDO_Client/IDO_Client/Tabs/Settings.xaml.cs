@@ -24,7 +24,6 @@ namespace IDO_Client.Tabs
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Idid.IsCameraShowed = false;
         }
         private void LogOut_clicked(object sender, EventArgs e)
         {
@@ -49,6 +48,11 @@ namespace IDO_Client.Tabs
             else
                 App.Current.Properties.Add("IsSaveToGallery", SaveGalarySwitcher.IsToggled);
             await App.Current.SavePropertiesAsync();
+        }
+
+        private void QuikStart_clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

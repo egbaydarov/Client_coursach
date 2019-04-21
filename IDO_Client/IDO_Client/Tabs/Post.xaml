@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDO_Client.Tabs.Post"
+             BackgroundColor="White">
+    <ContentPage.Content >
+        <Grid RowSpacing="5" >
+            <Grid.RowDefinitions >
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="20*" />
+            </Grid.RowDefinitions>
+            <ListView x:Name="ImageView" HasUnevenRows="True" ItemTapped="OnItemTapped" CachingStrategy="RecycleElement"/>
+            <Frame HasShadow="True" Grid.Row="1"  VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="6"  CornerRadius="25">
+                <ScrollView>
+                    <Label  x:Name="Description" BackgroundColor="White" TextColor="Black"  FontFamily = "Underdog-Regular.ttf#Underdog-Regular" FontSize="Medium" />
+                </ScrollView>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

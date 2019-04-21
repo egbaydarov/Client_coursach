@@ -19,7 +19,7 @@
                     <DataTemplate >
 
                         <ViewCell >
-                            <Frame HasShadow="True" Padding="5,5,5,5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="75"  CornerRadius="25">
+                            <Frame HasShadow="True" Margin="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="75"  CornerRadius="25">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnProfileTapped" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>

@@ -12,7 +12,7 @@
                     <DataTemplate >
 
                         <ViewCell>
-                            <Frame HasShadow="True" Padding="5,5,5,5"   CornerRadius="25">
+                            <Frame HasShadow="True" Margin="6"  CornerRadius="25">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnGoalTapped" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>

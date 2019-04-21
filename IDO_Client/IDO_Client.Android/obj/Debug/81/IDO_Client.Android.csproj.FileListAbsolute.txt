@@ -451,3 +451,8 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Andr
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\unliked.png
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\addimage.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\send.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\minus.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\camera.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\loadach.gif
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Debug\81\res\drawable\quickstart.png

@@ -40,3 +40,4 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\IDO_Client.csprojAssemblyReference.cache
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\Tabs\Goals.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Debug\netstandard2.0\Tabs\Post.xaml.g.cs
