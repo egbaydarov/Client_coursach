@@ -22,13 +22,29 @@ namespace IDO_Client.Tabs
             try
             {
                 ObservableCollection<Goal> items = new ObservableCollection<Goal>();
-
                 GoalsView.ItemsSource = items;
                 foreach (var goal in user.Goals)
                 {
                     items.Add(goal);
                 }
-
+                if(items.Count == 0)
+                {
+                    EmptyLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+                    if (user.Nickname.Equals(App.Profile.Nickname))
+                    {
+                        EmptyLabel.Text = "You hasn't added your goals yet.";
+                        EmptyLabel.IsVisible = true;
+                    }
+                    else
+                    {
+                        EmptyLabel.Text = "This user hasn't added goals yet.";
+                        EmptyLabel.IsVisible = true;
+                    }
+                }
+                else
+                {
+                    EmptyLabel.IsVisible = false;
+                }
             }
             catch
             {
@@ -47,9 +63,18 @@ namespace IDO_Client.Tabs
             if (sender is ListView lv) lv.SelectedItem = null;
         }
 
-        private void OnGoalTapped(object sender, EventArgs e)
+        private async void OnGoalTapped(object sender, EventArgs e)
         {
-
+            if (!user.Nickname.Equals(App.Profile.Nickname))
+                return;
+            var goal = ((sender as Frame).BindingContext as Goal);
+            if (goal.isReached)
+                return;
+            var idid = new Idid();
+            idid.IsGoal = true;
+            idid.SetGoal(goal);
+            idid.SetDescription(goal.Description);
+            await Navigation.PushAsync(idid);
         }
     }
 }

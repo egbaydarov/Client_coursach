@@ -2,6 +2,9 @@ FFImageLoading
 FFImageLoading.Forms
 FFImageLoading.Forms.Platform
 FFImageLoading.Platform
+FFImageLoading.Svg.Forms
+FFImageLoading.Svg.Platform
+FFImageLoading.Transformations
 FormsViewGroup
 IDO_Client
 ImageCircle.Forms.Plugin.Abstractions
@@ -10,6 +13,7 @@ Newtonsoft.Json
 Plugin.CurrentActivity
 Plugin.Media
 Plugin.Permissions
+SkiaSharp
 System.Runtime
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Lifecycle.Common

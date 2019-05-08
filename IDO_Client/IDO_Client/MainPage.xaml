@@ -7,6 +7,5 @@
              BarBackgroundColor="White"
              BarTextColor="Black"
              android:TabbedPage.BarItemColor="Black"
-             android:TabbedPage.BarSelectedItemColor="Black"
-             android:TabbedPage.IsSwipePagingEnabled="False">
+             android:TabbedPage.BarSelectedItemColor="Black">
 </TabbedPage>

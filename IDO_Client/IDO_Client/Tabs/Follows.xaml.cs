@@ -23,8 +23,23 @@ namespace IDO_Client.Tabs
         public bool isFollows = true;
         public void SetItemSource(List<User> users)
         {
+            if (users.Count == 0)
+            {
+                searchBar.IsVisible = false;
+                searchBar.IsEnabled = false;
+                EmptyLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+                EmptyLabel.Text = "This list is empty yet.";
+                EmptyLabel.IsVisible = true;
+                return;
+            }
+            else
+            {
+                EmptyLabel.IsVisible = false;
+            }
             ObservableCollection<User> items = new ObservableCollection<User>(users);
+
             FollowsView.ItemsSource = items;
+
         }
         public void SetSearchBarIsVisible(bool isvisivle)
         {
@@ -35,21 +50,29 @@ namespace IDO_Client.Tabs
         {
             base.OnAppearing();
             if (isFollows)
-            try
-            {
-                ObservableCollection<User> items = new ObservableCollection<User>();
-                var User = await GetUserData(Nickname);
-                FollowsView.ItemsSource = items;
-                foreach (var nick in User.Follows)
+                try
                 {
-                    items.Add(await GetUserData(nick));
+                    ObservableCollection<User> items = new ObservableCollection<User>();
+                    var User = await GetUserData(App.Profile.Nickname);
+                    FollowsView.ItemsSource = items;
+                    foreach (var nick in User.Follows)
+                    {
+                        items.Add(await GetUserData(nick));
+                    }
+                    if (items.Count == 0)
+                    {
+                        EmptyLabel.Text = "This list is empty yet.";
+                        EmptyLabel.IsVisible = true;
+                    }
+                    else
+                    {
+                        EmptyLabel.IsVisible = false;
+                    }
                 }
-                
-            }
-            catch
-            {
-                DependencyService.Get<IMessage>().LongAlert("Oops, Can't Load Follows");
-            }
+                catch
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Oops, Can't Load Follows");
+                }
         }
         public Follows(string nickname)
         {
@@ -58,7 +81,7 @@ namespace IDO_Client.Tabs
 
         }
 
-       static public async Task<User> GetUserData(string Nickname)
+        static public async Task<User> GetUserData(string Nickname)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -89,7 +112,7 @@ namespace IDO_Client.Tabs
                     ObservableCollection<User> items = new ObservableCollection<User>(JsonConvert.DeserializeObject<List<User>>(await response.Content.ReadAsStringAsync()));
                     FollowsView.ItemsSource = items;
                 }
-                
+
             }
             catch
             {
@@ -102,7 +125,7 @@ namespace IDO_Client.Tabs
             {
                 var user = (sender as Frame).BindingContext as User;
                 await Navigation.PushAsync(new Home(await GetUserData(user.Nickname)));
-                
+
             }
             catch (Exception ex)
             {
@@ -118,10 +141,10 @@ namespace IDO_Client.Tabs
 
         private void AvatarContxt_changed(object sender, EventArgs e)
         {
-            var item = ( sender as CachedImage).BindingContext as User;
+            var item = (sender as CachedImage).BindingContext as User;
             var image = sender as CachedImage;
-            if(item != null)
-            image.Source = item.Avatar != null ? $"{App.server}/{item.Nickname}/{item.Avatar}/download" : "defaultavatar.jpg" ;
+            if (item != null)
+                image.Source = item.Avatar != null ? $"{App.server}/{item.Nickname}/{item.Avatar}/download" : "defaultavatar.jpg";
         }
     }
 }

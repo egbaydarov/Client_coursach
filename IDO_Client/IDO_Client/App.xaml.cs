@@ -2,6 +2,7 @@
 using IDO_Client.Controls;
 using IDO_Client.Models;
 using IDO_Client.Models.Responses;
+using IDO_Client.Tabs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,13 @@ namespace IDO_Client
 {
     public partial class App : Application
     {
-        public const string server = @"http://192.168.1.39:44374";
+        public const string server = @"http://192.168.1.6:44374";
+        //public const string server = @"http://172.19.26.204:44374";
         //public const string server = @"https://idoapi20190414023717.azurewebsites.net";
+
+
+
+
         public const string Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzzxcvbnm1234567890<>_-";
 
         public static User Profile;
@@ -33,6 +39,12 @@ namespace IDO_Client
             {
                 CurrentAppSettings.IsSaveToGallery = (bool)IsSaveToGallery;
             }
+
+            if (App.Current.Properties.TryGetValue("InterestingFeedMode", out IsSaveToGallery))
+            {
+                Feed.InterestingViewMode = (bool)IsSaveToGallery;
+            }
+
             MainPage = new LoadPage();
 
         }
@@ -63,7 +75,7 @@ namespace IDO_Client
                     Current.Properties["nickname"] = login;
                     Current.Properties["password"] = pass;
                     await App.Current.SavePropertiesAsync();
-                    
+
                     Profile.Password = pass;
                     DependencyService.Get<IMessage>().ShortAlert("Succesfull!");
                     return true;

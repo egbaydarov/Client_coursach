@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDO_Client.EditPages.EditProfile"
+             BackgroundColor="White"
+             
+             >
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand" Margin="30">
+                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator" />
+                <StackLayout x:Name="FormLayout" Spacing="16" VerticalOptions="CenterAndExpand">
+
+                    <StackLayout Spacing="3">
+                        <Label Text="CURRENT PASSWORD"  FontSize="12" />
+                        <Entry Text=""  x:Name="curPass"   IsTextPredictionEnabled="False" TextChanged="OnIncorrectCurrentPass" MaxLength="25" IsPassword="True"/>
+                    </StackLayout>
+                    <StackLayout Spacing="3">
+                        <Label Text="NEW PASSWORD"  FontSize="12" />
+                        <Entry   x:Name="PassFirst" Placeholder="Optionally" FontFamily="Rubik-Regular.ttf#Rubik-Regular" TextChanged="OnIncorrectPass"  IsTextPredictionEnabled="False"  MaxLength="25" IsPassword="True"/>
+                    </StackLayout>
+                    <StackLayout Spacing="3">
+                        <Label Text="NEW PASSWORD AGAIN"  FontSize="12" />
+                        <Entry   x:Name="PassFirstAgain" Placeholder="Optionally" FontFamily="Rubik-Regular.ttf#Rubik-Regular" TextChanged="OnIncorrectPassAgain"  IsTextPredictionEnabled="False"  MaxLength="25" IsPassword="True"/>
+                    </StackLayout>
+                    <StackLayout Spacing="3" >
+                        <Label Text="NEW NICKNAME"   FontSize="12" />
+                        <Entry x:Name="newNickname"  MaxLength="16" TextChanged="OnIncorrectNickname"/>
+                    </StackLayout>
+                </StackLayout>
+                <Button Style="{StaticResource blackborderbutton}" Clicked="SaveChanges_Clicked"  Text="Save Changes" Margin="16"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

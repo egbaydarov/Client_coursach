@@ -1,5 +1,6 @@
 ﻿using FFImageLoading.Forms;
 using IDO_Client.Controls;
+using IDO_Client.Models;
 using IDO_Client.Models.Responses;
 using Newtonsoft.Json;
 using Plugin.Media;
@@ -17,6 +18,17 @@ namespace IDO_Client.Tabs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Idid : ContentPage
     {
+        public void SetDescription(string description)
+        {
+            Description.Text = description;
+        }
+
+        public void SetGoal(Goal goal)
+        {
+            this.goal = goal;
+        }
+        public Goal goal;
+        public bool IsGoal;
         class Cell : ViewCell
         {
             CachedImage image = new CachedImage()
@@ -118,6 +130,7 @@ namespace IDO_Client.Tabs
 
                             }
                         }
+                imagesCountLB.Text = $"{images.Count}/4";
 
             }
             catch
@@ -150,9 +163,11 @@ namespace IDO_Client.Tabs
                 default:
                     break;
             }
+
+            imagesCountLB.Text = $"{images.Count}/4";
         }
 
-        private void OnSendTapped(object sender, EventArgs e)
+        private async void OnSendTapped(object sender, EventArgs e)
         {
             using (var scope = new ActivityIndicatorScope(activityIndicator, true))
                 try
@@ -225,17 +240,37 @@ namespace IDO_Client.Tabs
                             ByteArrayContent baContent = new ByteArrayContent(image3);
                             content.Add(baContent, "file3", "IDID_PHOTO.jpg");
                         }
-                        var response = client.PutAsync(App.server + "/api/contents", content);
-                        response.Wait();
-                        if (response.Result.IsSuccessStatusCode)
+                        var response = await client.PutAsync(App.server + "/api/contents", content);
+                        if (response.IsSuccessStatusCode)
                         {
                             DependencyService.Get<IMessage>().LongAlert("Succesfully uploaded!");
+                            if (IsGoal)
+                            {
+                                Dictionary<string, string> values = new Dictionary<string, string>()
+                                {
+                                    { "nickname",App.Profile.Nickname },
+                                    { "password",App.Profile.Password},
+                                    { "description", goal.Description},
+                                    { "goalsnickname", goal.Nickname}
+                                };
+                                goal.isReached = true;
+                                var content1 = new FormUrlEncodedContent(values);
+                                var response1 = await client.PutAsync(App.server + "/goals", content1);
+                                if (!response1.IsSuccessStatusCode)
+                                    DependencyService.Get<IMessage>().LongAlert("Can't close goal");
+                                else
+                                {
+                                    DependencyService.Get<IMessage>().LongAlert("Congratulations, Goal Reached!");
+                                }
+                            }
                         }
                         else
                         {
                             DependencyService.Get<IMessage>().LongAlert("Cant upload achievement");
                         }
                     }
+                    imagesCountLB.Text = $"{images.Count}/4";
+
                 }
                 catch (Exception ex)
                 {
@@ -300,6 +335,8 @@ namespace IDO_Client.Tabs
                     {
                         throw new ApplicationException("No camera access.");
                     }
+                imagesCountLB.Text = $"{images.Count}/4";
+
             }
             catch (Exception ex)
             {

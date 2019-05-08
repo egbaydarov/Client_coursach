@@ -1,5 +1,6 @@
 ﻿using IDO_Client.AccountManagementPages;
 using IDO_Client.Controls;
+using IDO_Client.EditPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,12 +34,9 @@ namespace IDO_Client.Tabs
             App.Profile = null;
         }
 
-        private void Change_clicked(object sender, EventArgs e)
+        private async void Change_clicked(object sender, EventArgs e)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                
-            }
+            await Navigation.PushAsync(new EditProfile());
         }
 
         private async void OnSaveGallery(object sender, ToggledEventArgs e)
@@ -50,9 +48,31 @@ namespace IDO_Client.Tabs
             await App.Current.SavePropertiesAsync();
         }
 
-        private void QuikStart_clicked(object sender, EventArgs e)
+        private async void QuikStart_clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new QuickStart());
+        }
 
+        private async void About_clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new About());
+        }
+
+        private async void Feedmode_clicked(object sender, EventArgs e)
+        {
+            if (Feed.InterestingViewMode)
+                feedMode.Text = "Feed Mode: New";
+            else
+                feedMode.Text = "Feed Mode: Interesting";
+            
+
+            Feed.InterestingViewMode = !Feed.InterestingViewMode;
+
+            if (App.Current.Properties.Keys.Contains("InterestingFeedMode"))
+                App.Current.Properties["InterestingFeedMode"] = Feed.InterestingViewMode;
+            else
+                App.Current.Properties.Add("InterestingFeedMode", Feed.InterestingViewMode);
+            await App.Current.SavePropertiesAsync();
         }
     }
 }

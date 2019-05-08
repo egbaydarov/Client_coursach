@@ -36,11 +36,16 @@ namespace IDO_Client
             navigationFeedPage.Title = "Feed";
             navigationFeedPage.BarBackgroundColor = Color.White;
 
+            var NavigationSettingsPAge = new CustomNavigationPage(new Settings());
+            NavigationSettingsPAge.Icon = "settings.png";
+            NavigationSettingsPAge.Title = "Settings";
+
+
             this.Children.Add(navigationFollowsPage);
             this.Children.Add(navigationFeedPage);
             this.Children.Add(new Idid());
             this.Children.Add(navigationHomePage);
-            this.Children.Add(new Settings());
+            this.Children.Add(NavigationSettingsPAge);
             
         }
     }

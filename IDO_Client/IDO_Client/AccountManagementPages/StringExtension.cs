@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IDO_Client.AccountManagementPages
 {
-    static class StringExtension
+    static public class StringExtension
     {
         public static bool IsStringConsistOf(this string str, string symbols)
         {

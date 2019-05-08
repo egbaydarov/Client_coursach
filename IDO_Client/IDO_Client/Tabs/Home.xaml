@@ -14,25 +14,22 @@
             <StackLayout >
                 <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1.8*" />
-                        <RowDefinition Height="0.8*" />
-                        <RowDefinition Height="1.3*" />
-                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="AUTO" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <!--  header background  -->
-                    <forms:CachedImage Aspect="Fill" BindingContext="user" DownsampleToViewSize="true"  x:Name="avatar"  Grid.Row="0" HeightRequest="200">
-                        <forms:CachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnChangeAvatar" NumberOfTapsRequired="1"/>
-                        </forms:CachedImage.GestureRecognizers>
-                    </forms:CachedImage>
-                    <Image  Aspect="Fill" Margin="0,-1,0,-1" Source="CurvedMask.png" VerticalOptions="End" Grid.Row="0" />
+                    <StackLayout IsClippedToBounds="True" Grid.Row="0">
+                        <Image Aspect="AspectFill" BindingContext="user"  x:Name="avatar">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnChangeAvatar" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
 
-                    <!--  profile image  -->
-
-
-                    <!--  Profile Name  -->
+                    <Image  Aspect="Fill"  Source="CurvedMask.png" VerticalOptions="End" Grid.Row="0" />
                     <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand">
-                        <forms:CachedImage x:Name="MiniImage" BindingContext="user" DownsampleToViewSize="True"  Grid.Row="1" HeightRequest="50" HorizontalOptions="Center"    WidthRequest="55">
+                        <forms:CachedImage IsVisible="False" x:Name="MiniImage" BindingContext="user" DownsampleToViewSize="True"  Grid.Row="1" HeightRequest="50" HorizontalOptions="Center"    WidthRequest="55">
                             <forms:CachedImage.Transformations>
                                 <fftransformations:CircleTransformation BorderSize="1" BorderHexColor="#ffa6c9"/>
                             </forms:CachedImage.Transformations>
@@ -40,7 +37,6 @@
                         <Label x:Name="Name"  TextColor="Black"  FontAttributes="Bold"  FontSize="25" />
                     </StackLayout>
 
-                    <!--  Social Stats Section  -->
                     <Grid Grid.Row="2" Margin="0,13,0,0"  ColumnSpacing="0" RowSpacing="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -83,12 +79,11 @@
 
                     </Grid>
 
-                    <!--  follow button  -->
-                    <StackLayout Grid.Row="3">
-                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False"  Margin="10" x:Name="activityIndicator"/>
-                        <Button x:Name="Achievements" Text="Achievements" Margin="17,0,17,5" HeightRequest="41"
+                    <StackLayout Grid.Row="3" Margin="0,20,0,0" VerticalOptions="End">
+                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center"  IsVisible="False"  Margin="10" x:Name="activityIndicator"/>
+                        <Button x:Name="Achievements" Text="Achievements" VerticalOptions="End"  Margin="17,0,17,5" HeightRequest="41"
                     Clicked="OnAchievementsClicked" Style="{StaticResource blackborderbutton} "/>
-                        <Button x:Name="Follow" Text="Follow" Margin="17,0,17,5" HeightRequest="41"
+                        <Button x:Name="Follow" Text="Follow" VerticalOptions="End" Margin="17,0,17,10" HeightRequest="41"
                     Clicked="OnFollowClicked" Style="{StaticResource blackborderbutton} "/>
                     </StackLayout>
 

@@ -6,13 +6,14 @@
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="EmptyLabel" TextColor="Black" Margin="0,10,0,0" IsVisible="False" FontSize="Large" HorizontalOptions="Center" FontFamily="Rubik-Bold.ttf#Rubik-Bold"/>
             <ListView x:Name="GoalsView" ItemTapped="OnItemTapped" HasUnevenRows="True">
                 <ListView.ItemTemplate >
 
                     <DataTemplate >
 
                         <ViewCell>
-                            <Frame HasShadow="True" Margin="6"  CornerRadius="25">
+                            <Frame HasShadow="True" Margin="6" AnchorX="{Binding COST}" CornerRadius="25">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnGoalTapped" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
@@ -34,8 +35,8 @@
                                         </Label>
                                         <Label Text="{Binding Description, StringFormat='Goal: {0}'}" 
                                                FontFamily="Rubik-Regular.ttf#Rubik-Regular"
-                                               FontAttributes="Bold" 
-                                               Margin="30,3,0,0" 
+                                               FontAttributes="Bold"
+                                               Margin="30,3,0,0"
                                                Grid.Row="1"
                                                FontSize="Small"
                                                TextColor="Black"

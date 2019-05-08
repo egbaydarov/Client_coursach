@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:IDO_Client.Controls"
+             x:Class="IDO_Client.About"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label  Text="If you find a bug or misbehavior of an application, you can report about it on form below." TextColor="Black" Margin="8,40,8,0"/>
+            <Frame HasShadow="True"   VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="6" HeightRequest="250"  CornerRadius="25">
+                <ScrollView>
+                    <controls:BorderlessEditor   x:Name="message" BackgroundColor="White" TextColor="Black"  FontFamily = "Underdog-Regular.ttf#Underdog-Regular" FontSize="Large" />
+                </ScrollView>
+            </Frame>
+            <Button Style="{StaticResource blackborderbutton}" Clicked="ReportBug" Text="Report Bug" Margin="30,0,30,48" VerticalOptions="End"/>
+            <Label Text="This Application is Egor's Baydarov Course Work, HSE Moskow Student."
+                   FontFamily="Rubik-Bold.ttf#Rubik-Bold"
+                   FontSize="Micro" 
+                   Margin="2,0,2,0"
+                   VerticalOptions="EndAndExpand"/>
+            <Label Text="All Rights Reserved."
+                   FontFamily="Rubik-Bold.ttf#Rubik-Bold"
+                   FontSize="Micro" Margin=" 5,0,5,57"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -19,26 +19,28 @@
 
             <StackLayout  Grid.Row="1">
                 <StackLayout  Orientation="Horizontal" HeightRequest="35" HorizontalOptions="FillAndExpand">
-                    <ActivityIndicator  HorizontalOptions="StartAndExpand" IsVisible="False" x:Name="activityIndicator" />
+                    
 
-                    <forms:CachedImage Source="camera.png" DownsampleToViewSize="True"  HorizontalOptions="CenterAndExpand">
+                    <forms:CachedImage Source="camera.png" DownsampleToViewSize="True" Margin="5,0,0,0"  HorizontalOptions="StartAndExpand">
                         <forms:CachedImage.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnCameraTapped" NumberOfTapsRequired="1"/>
                         </forms:CachedImage.GestureRecognizers>
                     </forms:CachedImage>
 
-                    <forms:CachedImage Source="addgoal.png" DownsampleToViewSize="True"  HorizontalOptions="CenterAndExpand">
+                    <forms:CachedImage Source="gallery.png" DownsampleToViewSize="True" Margin="-10,0,0,0"  HorizontalOptions="StartAndExpand">
                         <forms:CachedImage.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAddImageTapped" NumberOfTapsRequired="1"/>
                         </forms:CachedImage.GestureRecognizers>
                     </forms:CachedImage>
 
-                    <forms:CachedImage Source="minus.png" DownsampleToViewSize="True"   HorizontalOptions="CenterAndExpand">
+                    <ActivityIndicator  HorizontalOptions="StartAndExpand" IsVisible="False" x:Name="activityIndicator" />
+                    
+                    <forms:CachedImage Source="deleteone.png" DownsampleToViewSize="True"   HorizontalOptions="CenterAndExpand">
                         <forms:CachedImage.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnRemoveImageTapped" NumberOfTapsRequired="1"/>
                         </forms:CachedImage.GestureRecognizers>
                     </forms:CachedImage>
-
+                    <Label Text="0/4" x:Name="imagesCountLB" FontSize="Large" FontFamily="Rubik-Regular.ttf#Rubik-Regular" TextColor="Black" Margin="0,4,0,0"/>
                     <forms:CachedImage Source="send.png" Margin="2" DownsampleToViewSize="True" HorizontalOptions="EndAndExpand">
                         <forms:CachedImage.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnSendTapped" NumberOfTapsRequired="1" />
@@ -48,7 +50,7 @@
                 </StackLayout>
                 
                 <Frame HasShadow="True" VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="6"  CornerRadius="25">
-                    <controlges:BorderlessEditor  x:Name="Description"  BackgroundColor="White" Placeholder="Describe your achievement. . ." />
+                    <controlges:BorderlessEditor  x:Name="Description" FontSize="Large"  BackgroundColor="White" Placeholder="Describe your achievement. . ." />
                 </Frame>
                 
             </StackLayout>

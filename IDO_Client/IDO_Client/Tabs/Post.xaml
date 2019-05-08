@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:IDO_Client.Controls"
              x:Class="IDO_Client.Tabs.Post"
              BackgroundColor="White">
     <ContentPage.Content >
@@ -10,11 +12,54 @@
                 <RowDefinition Height="20*" />
             </Grid.RowDefinitions>
             <ListView x:Name="ImageView" HasUnevenRows="True" ItemTapped="OnItemTapped" CachingStrategy="RecycleElement"/>
-            <Frame HasShadow="True" Grid.Row="1"  VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="6"  CornerRadius="25">
-                <ScrollView>
-                    <Label  x:Name="Description" BackgroundColor="White" TextColor="Black"  FontFamily = "Underdog-Regular.ttf#Underdog-Regular" FontSize="Medium" />
-                </ScrollView>
-            </Frame>
+            <StackLayout  Grid.Row="1">
+                <forms:CachedImage x:Name="edit" Source="edit.png" IsEnabled="False" IsVisible="False" DownsampleToViewSize="True" WidthRequest="50"  HorizontalOptions="CenterAndExpand">
+                    <forms:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnEditTapped" NumberOfTapsRequired="1"/>
+                    </forms:CachedImage.GestureRecognizers>
+                </forms:CachedImage>
+                <StackLayout x:Name="EditStack" IsEnabled="False" IsVisible="False" Orientation="Horizontal" HeightRequest="35" HorizontalOptions="FillAndExpand">
+
+                    <ActivityIndicator  HorizontalOptions="StartAndExpand" IsVisible="False" x:Name="activityIndicator" />
+                    
+                    <forms:CachedImage  Source="camera.png" DownsampleToViewSize="True"  HorizontalOptions="CenterAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCameraTapped" NumberOfTapsRequired="1"/>
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                    <forms:CachedImage Source="addgoal.png" DownsampleToViewSize="True"  HorizontalOptions="CenterAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAddImageTapped" NumberOfTapsRequired="1"/>
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                    <forms:CachedImage Source="minus.png" DownsampleToViewSize="True"   HorizontalOptions="CenterAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnRemoveImageTapped" NumberOfTapsRequired="1"/>
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                    <forms:CachedImage Source="delete.png" Margin="2" DownsampleToViewSize="True" HorizontalOptions="EndAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnDeleteTapped" NumberOfTapsRequired="1" />
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                    <forms:CachedImage Source="send.png" Margin="2" DownsampleToViewSize="True" HorizontalOptions="EndAndExpand">
+                        <forms:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSendTapped" NumberOfTapsRequired="1" />
+                        </forms:CachedImage.GestureRecognizers>
+                    </forms:CachedImage>
+
+                </StackLayout>
+
+                <Frame HasShadow="True"   VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="6"  CornerRadius="25">
+                    <ScrollView>
+                        <controls:BorderlessEditor IsReadOnly="True"  x:Name="Description" BackgroundColor="White" TextColor="Black"  FontFamily = "Underdog-Regular.ttf#Underdog-Regular" FontSize="Large" />
+                    </ScrollView>
+                </Frame>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

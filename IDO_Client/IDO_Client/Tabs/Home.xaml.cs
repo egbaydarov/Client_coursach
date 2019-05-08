@@ -25,6 +25,8 @@ namespace IDO_Client.Tabs
         {
             try
             {
+                if (isTabPage)
+                    user = App.Profile;
                 base.OnAppearing();
                 Name.Text = user.Nickname;
                 Followers.Text = user.Followers.Count.ToString();
@@ -43,20 +45,13 @@ namespace IDO_Client.Tabs
             isTabPage = IsTabPage;
             user = profile;
             InitializeComponent();
+
             if (App.Profile.Nickname.Equals(user.Nickname))
             {
                 Follow.IsEnabled = false;
                 Follow.IsVisible = false;
 
             }
-            //Name.BindingContext = user;
-            //Follows.BindingContext = user;
-            //Followers.BindingContext = user;
-            //goals.BindingContext = user;
-            //Name.SetBinding(Label.TextProperty, "Nickname");
-            //Followers.SetBinding(Label.TextProperty, "Followers.Count");
-            //Follows.SetBinding(Label.TextProperty, "Follows.Count");
-            //goals.SetBinding(Label.TextProperty, "Goals.Count");
 
             if (user.Avatar != null)
             {

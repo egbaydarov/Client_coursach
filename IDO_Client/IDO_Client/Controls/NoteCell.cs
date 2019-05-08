@@ -17,14 +17,12 @@ namespace IDO_Client.Controls
     {
         static double size;
 
-        Label date = new Label { HorizontalOptions = LayoutOptions.StartAndExpand, Margin = new Thickness(7,0,0,0) };
+        Label date = new Label { HorizontalOptions = LayoutOptions.StartAndExpand, Margin = new Thickness(7, 0, 0, 0) };
 
         CachedImage userAvatar = new CachedImage()
         {
-            Margin = new Thickness(5,5,5,5),
+            Margin = new Thickness(5, 5, 5, 5),
             VerticalOptions = LayoutOptions.CenterAndExpand,
-            HeightRequest = 45,
-            WidthRequest = 45,
             CacheDuration = new TimeSpan(0, 0, 30, 0),
             LoadingDelay = 50,
             Transformations = new List<ITransformation>()
@@ -48,13 +46,23 @@ namespace IDO_Client.Controls
         };
         Label userNicknameLabel = new Label()
         {
-            Margin = new Thickness(5,0,0,0),
+            Margin = new Thickness(5, 0, 0, 0),
             VerticalOptions = LayoutOptions.CenterAndExpand,
             FontSize = size * 1.25,
             TextColor = Color.Black,
             FontFamily = "Rubik-Bold.ttf#Rubik-Bold"
         };
+        Label addgoalLabel = new Label()
+        {
+            Margin = new Thickness(0, 0, 5, 0),
+            Text = "Add To Goals",
+            TextColor = Color.Black,
+            FontAttributes = FontAttributes.Bold,
+            FontSize = size * 0.8,
+            HorizontalOptions = LayoutOptions.EndAndExpand,
+            FontFamily = "Rubik-Regular.ttf#Rubik-Regular"
 
+        };
         Image additionOptionsImage = new Image()
         {
             VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -64,7 +72,7 @@ namespace IDO_Client.Controls
         };
         Label progressLabel = new Label()
         {
-            Margin = new Thickness(5,0,0,0),
+            Margin = new Thickness(5, 0, 0, 0),
             VerticalOptions = LayoutOptions.CenterAndExpand,
             TextColor = Color.Black,
             FontAttributes = FontAttributes.Bold,
@@ -72,14 +80,15 @@ namespace IDO_Client.Controls
         };
         Label descriptionLabel = new Label()
         {
-            HeightRequest = size * 12,
-            WidthRequest = size * 18,
+            Margin = new Thickness(0, 15, 0, 0),
+            HeightRequest = size * 20,
+            WidthRequest = size * 20,
             VerticalOptions = LayoutOptions.CenterAndExpand,
             HorizontalOptions = LayoutOptions.CenterAndExpand,
-            FontSize = size * 3,
-            TextColor = Color.Pink,
+            FontSize = size * 1.5,
+            TextColor = Color.White,
             FontAttributes = FontAttributes.Bold,
-            FontFamily = "Underdog-Regular.ttf#Underdog-Regular",
+            FontFamily = "OpenSansCondensed-Bold.ttf#OpenSansCondensed-Bold",
             HorizontalTextAlignment = TextAlignment.Center
         };
         public readonly CachedImage achievementImage = null;
@@ -135,7 +144,7 @@ namespace IDO_Client.Controls
 
             achievementImage = new CachedImage()
             {
-                LoadingPlaceholder = "loadAch.gif",
+                LoadingPlaceholder = "load.gif",
                 CacheDuration = new TimeSpan(0, 0, 30, 0),
                 LoadingDelay = 50,
                 Transformations = new List<ITransformation>()
@@ -143,11 +152,13 @@ namespace IDO_Client.Controls
                     new BlurredTransformation(40)
                 },
                 TransformPlaceholders = false,
+                DownsampleWidth = Application.Current.MainPage.Width,
+                //DownsampleUseDipUnits = true,
                 Aspect = Aspect.AspectFill,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
-            var lukasRecognizer = new TapGestureRecognizer { NumberOfTapsRequired = 2};
-            var lukasRecognizerSingle = new TapGestureRecognizer { NumberOfTapsRequired = 1};
+            var lukasRecognizer = new TapGestureRecognizer { NumberOfTapsRequired = 2 };
+            var lukasRecognizerSingle = new TapGestureRecognizer { NumberOfTapsRequired = 1 };
             lukasRecognizer.Tapped += OnLukased;
             lukasRecognizerSingle.Tapped += OnLukased;
             achievementImage.GestureRecognizers.Add(lukasRecognizer);
@@ -157,7 +168,7 @@ namespace IDO_Client.Controls
             goToPostRecognizer.Tapped += OnPostTapped;
             achievementImage.GestureRecognizers.Add(goToPostRecognizer);
 
-            var OnProfileClicked = new TapGestureRecognizer { NumberOfTapsRequired = 1};
+            var OnProfileClicked = new TapGestureRecognizer { NumberOfTapsRequired = 1 };
             OnProfileClicked.Tapped += OnProfileClickedHandler;
             userNicknameLabel.GestureRecognizers.Add(OnProfileClicked);
             userAvatar.GestureRecognizers.Add(OnProfileClicked);
@@ -197,25 +208,15 @@ namespace IDO_Client.Controls
                     //new RowDefinition { Height = new GridLength(0.1,GridUnitType.Star)}
                     new RowDefinition { Height = size * 3},
                     new RowDefinition { Height = size * 1},
-                    new RowDefinition { Height = size * 20},
+                    new RowDefinition { Height = GridLength.Auto},
                     new RowDefinition { Height = size * 2.5}
                     //new RowDefinition { Height = new GridLength(0.2,GridUnitType.Star)}
                 }
             };
             mainGrid.Children.Add(upperSL, 0, 0);
             mainGrid.Children.Add(date, 0, 1);
-            mainGrid.Children.Add(new Label()
-            {
-                Margin = new Thickness(0,0,5,0),
-                Text = "Add To Goals",
-                TextColor = Color.Black,
-                FontAttributes = FontAttributes.Bold,
-                FontSize = size * 0.8,
-                HorizontalOptions = LayoutOptions.EndAndExpand,
-                FontFamily = "Rubik-Regular.ttf#Rubik-Regular"
-
-            }, 0, 1);
-            var imageSL = new StackLayout() { HeightRequest = size*20, IsClippedToBounds = true };
+            mainGrid.Children.Add(addgoalLabel, 0, 1);
+            var imageSL = new StackLayout() {IsClippedToBounds = true };
             imageSL.Children.Add(achievementImage);
             mainGrid.Children.Add(imageSL, 0, 2);
             mainGrid.Children.Add(descriptionLabel, 0, 2);
@@ -234,7 +235,7 @@ namespace IDO_Client.Controls
 
         }
 
-        private async  void OnPostTapped(object sender, EventArgs e)
+        private async void OnPostTapped(object sender, EventArgs e)
         {
             await (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.PushAsync(new Post(BindingContext as Data));
         }
@@ -259,8 +260,8 @@ namespace IDO_Client.Controls
             page.SetSearchBarIsVisible(false);
             page.isFollows = false;
             var users = new List<User>();
-            foreach(var i in data.Lukasers)
-               users.Add(await Follows.GetUserData(i));
+            foreach (var i in data.Lukasers)
+                users.Add(await Follows.GetUserData(i));
             page.SetItemSource(users);
             await (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.PushAsync(page);
 
@@ -270,13 +271,29 @@ namespace IDO_Client.Controls
         {
             achievementImage.Source = null;
             userAvatar.Source = null;
+
             base.OnBindingContextChanged();
             var item = BindingContext as Data;
             if (item == null)
             {
                 return;
             }
-            achievementImage.Source = item.Image;
+
+            //WTF
+            item.Name = item.Name ?? "NULL";
+            item.Description = item.Description ?? "NULL";
+            item.ImageReference = item.ImageReference ?? "NULL";
+            item.Lukasers = item.Lukasers ?? new List<string>();
+
+            if (item.Name.Equals(App.Profile.Nickname))
+            {
+                additionOptionsImage.IsEnabled = false;
+                additionOptionsImage.IsVisible = false;
+                addgoalLabel.IsVisible = false;
+                addgoalLabel.IsEnabled = false;
+            }
+
+            achievementImage.Source = $"{App.server}/{item.Name}/{item.ImageReference}/download";
             string[] postDateArr = item.ImageReference.Split('.')[0].Split('-');
             try
             {
@@ -287,8 +304,8 @@ namespace IDO_Client.Controls
                 date.Text = "OLD_FILE";
             }
             userAvatar.Source = item.AvatarReference;
-            int discriptionBound = item.Description.Length < 43 ? item.Description.Length : 43;
-            descriptionLabel.Text = item.Description.Substring(0, discriptionBound) + " . . .";
+            int discriptionBound = item.Description.Length < 50 ? item.Description.Length : 50;
+            descriptionLabel.Text = "_____________\n" + item.Description.Substring(0, discriptionBound) + " . . .\n_____________\nTap To View";
             respectIcon.Source = item.Lukasers.IndexOf(App.Profile.Nickname) != -1 ? "startpageimage.png" : "unliked.png";
             progressLabel.Text = $" {item.Lukasers.Count} people think that it's cool";
         }
