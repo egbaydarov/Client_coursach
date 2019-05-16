@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace IDO_Client.Tabs
@@ -20,7 +21,7 @@ namespace IDO_Client.Tabs
     public partial class Follows : ContentPage
     {
         string Nickname;
-        public bool isFollows = true;
+        public bool isFollows = false;
         public void SetItemSource(List<User> users)
         {
             if (users.Count == 0)
@@ -46,9 +47,16 @@ namespace IDO_Client.Tabs
             searchBar.IsEnabled = isvisivle;
             searchBar.IsVisible = isvisivle;
         }
-        protected async override void OnAppearing()
+       
+        public Follows(string nickname, bool isFollows = false)
         {
-            base.OnAppearing();
+            this.isFollows = isFollows;
+            InitializeComponent();
+            Nickname = nickname;
+            Refresh();
+        }
+        async void Refresh()
+        {
             if (isFollows)
                 try
                 {
@@ -68,19 +76,14 @@ namespace IDO_Client.Tabs
                     {
                         EmptyLabel.IsVisible = false;
                     }
+                    FollowsView.IsRefreshing = false;
                 }
                 catch
                 {
                     DependencyService.Get<IMessage>().LongAlert("Oops, Can't Load Follows");
+                    FollowsView.IsRefreshing = false;
                 }
         }
-        public Follows(string nickname)
-        {
-            InitializeComponent();
-            Nickname = nickname;
-
-        }
-
         static public async Task<User> GetUserData(string Nickname)
         {
             using (HttpClient client = new HttpClient())
@@ -125,6 +128,8 @@ namespace IDO_Client.Tabs
             {
                 var user = (sender as Frame).BindingContext as User;
                 await Navigation.PushAsync(new Home(await GetUserData(user.Nickname)));
+                if (Navigation.NavigationStack.Count > 3)
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
 
             }
             catch (Exception ex)
@@ -136,7 +141,7 @@ namespace IDO_Client.Tabs
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null) return;
-            if (sender is ListView lv) lv.SelectedItem = null;
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
 
         private void AvatarContxt_changed(object sender, EventArgs e)
@@ -145,6 +150,11 @@ namespace IDO_Client.Tabs
             var image = sender as CachedImage;
             if (item != null)
                 image.Source = item.Avatar != null ? $"{App.server}/{item.Nickname}/{item.Avatar}/download" : "defaultavatar.jpg";
+        }
+
+        private void OnRefreshing(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }

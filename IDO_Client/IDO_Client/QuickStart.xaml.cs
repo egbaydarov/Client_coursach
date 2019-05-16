@@ -12,9 +12,19 @@ namespace IDO_Client
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuickStart : ContentPage
     {
-        public QuickStart()
+        bool ISFirstShow;
+        public QuickStart(bool isFirstShow)
         {
+            ISFirstShow = isFirstShow;
             InitializeComponent();
+        }
+
+        private async void Back_clicked(object sender, EventArgs e)
+        {
+            if(ISFirstShow)
+            App.Current.MainPage = new MainPage();
+            else
+            await Navigation.PopAsync();
         }
     }
 }

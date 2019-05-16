@@ -23,13 +23,12 @@ namespace IDO_Client.Controls
         {
             Margin = new Thickness(5, 5, 5, 5),
             VerticalOptions = LayoutOptions.CenterAndExpand,
-            CacheDuration = new TimeSpan(0, 0, 30, 0),
+            CacheDuration = new TimeSpan(0, 0, 30, 0),  
             LoadingDelay = 50,
             Transformations = new List<ITransformation>()
             {
                 new CircleTransformation(1, "#ffa6c9")
-            },
-            DownsampleToViewSize = true
+            }
         };
         CachedImage respectIcon = new CachedImage()
         {
@@ -144,7 +143,6 @@ namespace IDO_Client.Controls
 
             achievementImage = new CachedImage()
             {
-                LoadingPlaceholder = "load.gif",
                 CacheDuration = new TimeSpan(0, 0, 30, 0),
                 LoadingDelay = 50,
                 Transformations = new List<ITransformation>()
@@ -238,6 +236,9 @@ namespace IDO_Client.Controls
         private async void OnPostTapped(object sender, EventArgs e)
         {
             await (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.PushAsync(new Post(BindingContext as Data));
+            if ((App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack.Count > 3)
+                (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.RemovePage((App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack[(App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack.Count - 2]);
+
         }
 
         private async void OnProfileClickedHandler(object sender, EventArgs e)
@@ -246,6 +247,9 @@ namespace IDO_Client.Controls
             {
                 var user = BindingContext as Data;
                 await (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.PushAsync(new Home(await Follows.GetUserData(user.Name)));
+                if ((App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack.Count > 3)
+                    (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.RemovePage((App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack[(App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack.Count - 2]);
+
             }
             catch (Exception ex)
             {
@@ -264,6 +268,8 @@ namespace IDO_Client.Controls
                 users.Add(await Follows.GetUserData(i));
             page.SetItemSource(users);
             await (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.PushAsync(page);
+            if ((App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack.Count > 3)
+                (App.Current.MainPage as TabbedPage).CurrentPage.Navigation.RemovePage((App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack[(App.Current.MainPage as TabbedPage).CurrentPage.Navigation.NavigationStack.Count - 2]);
 
         }
 
@@ -336,7 +342,7 @@ namespace IDO_Client.Controls
                         DependencyService.Get<IMessage>().ShortAlert("Goal added, check profile :)");
                     }
                     else
-                        DependencyService.Get<IMessage>().ShortAlert("Sorry, Can't add goal :(");
+                        DependencyService.Get<IMessage>().ShortAlert("Goal was added before.");
                 }
             }
             catch

@@ -8,12 +8,13 @@
                  Icon="feed.png"
                  Title="Feed"
                  BackgroundColor="White"
-                 NavigationPage.HasNavigationBar="False">
+                 NavigationPage.HasNavigationBar="False"
+                 >
     <ContentPage.Content>
         <StackLayout>
 
             <Label x:Name="EmptyLabel" TextColor="Black" IsVisible="False" FontSize="Large" HorizontalOptions="Center" Margin="0,10,0,0" FontFamily="Rubik-Bold.ttf#Rubik-Bold"/>
-            <ListView x:Name="FeedView" Grid.Row="0"  HasUnevenRows="true" CachingStrategy="RecycleElement"  ItemTapped="OnItemTapped" ItemAppearing="FeedView_ItemAppearing">
+            <ListView  x:Name="FeedView" Grid.Row="0" IsPullToRefreshEnabled="True" Refreshing="OnRefresh" HasUnevenRows="true" CachingStrategy="RecycleElement"  ItemTapped="OnItemTapped" ItemAppearing="FeedView_ItemAppearing">
                     <ListView.ItemTemplate>
                         <DataTemplate x:Name="dataTemplate">
                         <controls:NoteCell x:Name="viewCell">

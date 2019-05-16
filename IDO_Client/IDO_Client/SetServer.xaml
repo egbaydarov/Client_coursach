@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDO_Client.SetServer">
+    <ContentPage.Content>
+        <StackLayout Spacing="8" Margin="5,100,5,0">
+            <Label Text="Server Address"  FontSize="12" />
+            <Entry x:Name="Server" IsTextPredictionEnabled="False"/>
+            <Button Style="{StaticResource blackborderbutton}" Clicked="SetServer_Clicked"  VerticalOptions="EndAndExpand" Text="Change Server" Margin="16"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,7 +1,6 @@
 ﻿using IDO_Client.AccountManagementPages;
 using IDO_Client.Controls;
 using IDO_Client.Models;
-using IDO_Client.Models.Responses;
 using IDO_Client.Tabs;
 using Newtonsoft.Json;
 using System;
@@ -16,9 +15,9 @@ namespace IDO_Client
 {
     public partial class App : Application
     {
-        public const string server = @"http://192.168.1.6:44374";
+        //public static string server = @"http://192.168.1.6:44374";
         //public const string server = @"http://172.19.26.204:44374";
-        //public const string server = @"https://idoapi20190414023717.azurewebsites.net";
+        public static string server = @"https://pecardo.azurewebsites.net";
 
 
 
@@ -61,6 +60,7 @@ namespace IDO_Client
                         DependencyService.Get<IMessage>().ShortAlert("Oops!");
                         return false;
                     }
+
                     string content = await responseJS.Content.ReadAsStringAsync();
                     var response = JsonConvert.DeserializeObject<User>(content);
 
@@ -74,6 +74,7 @@ namespace IDO_Client
                     Profile = response;
                     Current.Properties["nickname"] = login;
                     Current.Properties["password"] = pass;
+
                     await App.Current.SavePropertiesAsync();
 
                     Profile.Password = pass;

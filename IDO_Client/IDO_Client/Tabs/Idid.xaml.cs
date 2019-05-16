@@ -1,7 +1,6 @@
 ﻿using FFImageLoading.Forms;
 using IDO_Client.Controls;
 using IDO_Client.Models;
-using IDO_Client.Models.Responses;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -11,7 +10,9 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Net.Http;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
+using TabSwipe = Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace IDO_Client.Tabs
 {
@@ -34,8 +35,9 @@ namespace IDO_Client.Tabs
             CachedImage image = new CachedImage()
             {
                 CacheDuration = new TimeSpan(0, 30, 0),
-                DownsampleWidth = Application.Current.MainPage.Width,
+                DownsampleWidth = Xamarin.Forms.Application.Current.MainPage.Width,
                 DownsampleUseDipUnits = true,
+                DownsampleToViewSize = true,
                 Aspect = Aspect.AspectFill,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
@@ -80,6 +82,15 @@ namespace IDO_Client.Tabs
             InitializeComponent();
             ImageView.ItemsSource = images;
             ImageView.ItemTemplate = new DataTemplate(typeof(Cell));
+            if (images.Count == 0)
+            {
+                placeholder.IsVisible = true;
+            }
+            else
+            {
+                placeholder.IsVisible = false;
+                ImageView.IsVisible = true;
+            }
             //images.Add(new Model("addphoto.png"));
         }
 
@@ -131,6 +142,15 @@ namespace IDO_Client.Tabs
                             }
                         }
                 imagesCountLB.Text = $"{images.Count}/4";
+                if (images.Count == 0)
+                {
+                    placeholder.IsVisible = true;
+                }
+                else
+                {
+                    placeholder.IsVisible = false;
+                    ImageView.IsVisible = true;
+                }
 
             }
             catch
@@ -165,6 +185,15 @@ namespace IDO_Client.Tabs
             }
 
             imagesCountLB.Text = $"{images.Count}/4";
+            if (images.Count == 0)
+            {
+                placeholder.IsVisible = true;
+            }
+            else
+            {
+                placeholder.IsVisible = false;
+                ImageView.IsVisible = true;
+            }
         }
 
         private async void OnSendTapped(object sender, EventArgs e)
@@ -177,7 +206,7 @@ namespace IDO_Client.Tabs
                     byte[] image2 = null;
                     byte[] image3 = null;
                     if (String.IsNullOrWhiteSpace(Description.Text) || buffer == null)
-                        throw new ApplicationException("Oops!, Your forgot about decription or image");
+                        throw new ApplicationException("Oops!, You forgot about decription or image");
                     if (buffer != null)
                     {
                         image = new byte[buffer.Length];
@@ -270,6 +299,15 @@ namespace IDO_Client.Tabs
                         }
                     }
                     imagesCountLB.Text = $"{images.Count}/4";
+                    if (images.Count == 0)
+                    {
+                        placeholder.IsVisible = true;
+                    }
+                    else
+                    {
+                        placeholder.IsVisible = false;
+                        ImageView.IsVisible = true;
+                    }
 
                 }
                 catch (Exception ex)
@@ -336,7 +374,15 @@ namespace IDO_Client.Tabs
                         throw new ApplicationException("No camera access.");
                     }
                 imagesCountLB.Text = $"{images.Count}/4";
-
+                if (images.Count == 0)
+                {
+                    placeholder.IsVisible = true;
+                }
+                else
+                {
+                    placeholder.IsVisible = false;
+                    ImageView.IsVisible = true;
+                }
             }
             catch (Exception ex)
             {
@@ -351,7 +397,8 @@ namespace IDO_Client.Tabs
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null) return;
-            if (sender is ListView lv) lv.SelectedItem = null;
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
+
     }
 }

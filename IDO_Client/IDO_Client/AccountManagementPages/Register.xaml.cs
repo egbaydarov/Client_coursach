@@ -1,5 +1,4 @@
 ﻿using IDO_Client.Controls;
-using IDO_Client.Models.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -49,7 +48,7 @@ namespace IDO_Client.AccountManagementPages
                         {
                             if (await App.TryLogin(Nick.Text, PassFirst.Text))
                             {
-                                App.Current.MainPage = new MainPage();
+                                App.Current.MainPage = new QuickStart(true);
                             }
                             else
                             {

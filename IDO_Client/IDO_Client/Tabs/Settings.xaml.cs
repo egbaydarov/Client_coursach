@@ -7,8 +7,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace IDO_Client.Tabs
@@ -21,11 +21,17 @@ namespace IDO_Client.Tabs
             InitializeComponent();
             SaveGalarySwitcher.BindingContext = App.CurrentAppSettings;
             SaveGalarySwitcher.SetBinding(Switch.IsToggledProperty, "IsSaveToGallery");
+            object interesting = null;
+            App.Current.Properties.TryGetValue("InterestingFeedMode",out interesting);
+            if (interesting != null &&
+                (bool)interesting)
+                feedMode.Text = "Feed Mode: Interesting";
+            else
+                feedMode.Text = "Feed Mode: New";
+
+
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
+        
         private void LogOut_clicked(object sender, EventArgs e)
         {
             App.Current.Properties.Remove("password");
@@ -50,12 +56,16 @@ namespace IDO_Client.Tabs
 
         private async void QuikStart_clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new QuickStart());
+            await Navigation.PushAsync(new QuickStart(false));
+            if (Navigation.NavigationStack.Count > 3)
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
         }
 
         private async void About_clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new About());
+            if (Navigation.NavigationStack.Count > 3)
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
         }
 
         private async void Feedmode_clicked(object sender, EventArgs e)
@@ -74,5 +84,6 @@ namespace IDO_Client.Tabs
                 App.Current.Properties.Add("InterestingFeedMode", Feed.InterestingViewMode);
             await App.Current.SavePropertiesAsync();
         }
+        
     }
 }

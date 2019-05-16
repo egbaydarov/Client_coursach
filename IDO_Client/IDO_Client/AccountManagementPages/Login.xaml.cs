@@ -15,14 +15,9 @@ namespace IDO_Client.AccountManagementPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            
-        }
+        
         public Login()
         {
-            
             InitializeComponent();
         }
 
@@ -35,6 +30,7 @@ namespace IDO_Client.AccountManagementPages
                     if (await App.TryLogin(UsernameEntry.Text, PasswordEntry.Text))
                     {
                         App.Current.MainPage = new MainPage();
+
                     }
                     else
                         throw
@@ -43,7 +39,7 @@ namespace IDO_Client.AccountManagementPages
             }
             catch(Exception ex)
             {
-                DependencyService.Get<IMessage>().ShortAlert(ex.Message);
+               // DependencyService.Get<IMessage>().ShortAlert(ex.Message);
             }
         }
 
@@ -52,6 +48,9 @@ namespace IDO_Client.AccountManagementPages
             await Navigation.PushAsync(new Register(),true);
         }
 
-        
+        private async void SetServer(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SetServer(), true);
+        }
     }
 }

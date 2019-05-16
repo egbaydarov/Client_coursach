@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace IDO_Client.Tabs
@@ -20,7 +21,7 @@ namespace IDO_Client.Tabs
     public partial class Home : ContentPage
     {
         User user;
-        bool isTabPage;
+        bool isTabPage = false;
         protected override void OnAppearing()
         {
             try
@@ -88,7 +89,10 @@ namespace IDO_Client.Tabs
 
                 NavigationPage.SetHasNavigationBar(FollowersPage, true);
                 FollowersPage.SetItemSource(users);
+                FollowersPage.isFollows = false;
                 await Navigation.PushAsync(FollowersPage);
+                if (Navigation.NavigationStack.Count > 3)
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
         }
 
@@ -108,7 +112,10 @@ namespace IDO_Client.Tabs
 
                 NavigationPage.SetHasNavigationBar(FollowsPage, true);
                 FollowsPage.SetItemSource(users);
+                FollowsPage.isFollows = false;
                 await Navigation.PushAsync(FollowsPage);
+                if (Navigation.NavigationStack.Count > 3)
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
         }
 
@@ -170,6 +177,8 @@ namespace IDO_Client.Tabs
                 var page = new Feed(user.Nickname);
                 NavigationPage.SetHasNavigationBar(page, true);
                 await Navigation.PushAsync(page);
+                if (Navigation.NavigationStack.Count > 3)
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
             catch
             {
@@ -181,6 +190,8 @@ namespace IDO_Client.Tabs
         private void OnGoalsClicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new Goals(user));
+            if (Navigation.NavigationStack.Count > 3)
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
         }
 
         private async void OnChangeAvatar(object sender, EventArgs e)

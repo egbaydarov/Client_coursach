@@ -15,7 +15,8 @@
             <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" x:Name="activityIndicator"/>
             <Label x:Name="EmptyLabel" Margin="0,10,0,0" TextColor="Black" IsVisible="False" FontSize="Large" HorizontalOptions="Center" FontFamily="Rubik-Bold.ttf#Rubik-Bold"/>
 
-            <ListView x:Name="FollowsView" ItemTapped="OnItemTapped"  HasUnevenRows="True" >
+            <ListView x:Name="FollowsView" ItemTapped="OnItemTapped" IsPullToRefreshEnabled="True" Refreshing="OnRefreshing" HasUnevenRows="True" 
+                      >
                 <ListView.ItemTemplate>
 
                     <DataTemplate >

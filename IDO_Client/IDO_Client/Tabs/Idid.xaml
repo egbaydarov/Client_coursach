@@ -9,12 +9,13 @@
              >
 
     <ContentPage.Content >
-        <Grid RowSpacing="5" >
+        <Grid RowSpacing="5" IsClippedToBounds="True" >
             <Grid.RowDefinitions >
                 <RowDefinition Height="40*" />
                 <RowDefinition Height="20*" />
             </Grid.RowDefinitions>
-            <ListView x:Name="ImageView" HasUnevenRows="True" ItemTapped="OnItemTapped" CachingStrategy="RecycleElement"/>
+            <Image x:Name="placeholder" Source="ididplaceholder.png" Grid.Row="0" Aspect="AspectFill" IsVisible="False"/>
+            <ListView x:Name="ImageView" HasUnevenRows="True" ItemTapped="OnItemTapped" Grid.Row="0" CachingStrategy="RecycleElement"/>
 
 
             <StackLayout  Grid.Row="1">

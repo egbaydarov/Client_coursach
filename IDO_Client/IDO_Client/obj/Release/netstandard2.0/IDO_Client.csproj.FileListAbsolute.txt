@@ -24,3 +24,4 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\IDO_Client.csprojAssemblyReference.cache
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\QuickStart.xaml.g.cs
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\About.xaml.g.cs
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client\obj\Release\netstandard2.0\SetServer.xaml.g.cs

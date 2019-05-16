@@ -15,6 +15,7 @@ namespace IDO_Client.Tabs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Goals : ContentPage
     {
+        Goal contextGoal { get; set; }
         User user;
         protected override void OnAppearing()
         {
@@ -55,8 +56,8 @@ namespace IDO_Client.Tabs
         {
             this.user = user;
             InitializeComponent();
-        }
 
+        }
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null) return;
@@ -76,5 +77,6 @@ namespace IDO_Client.Tabs
             idid.SetDescription(goal.Description);
             await Navigation.PushAsync(idid);
         }
+
     }
 }

@@ -1,19 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Devices>
-  <Device id="3bfbc41c">
+  <Device id="05157df525aa1e23">
     <ResultingAbi>arm64-v8a</ResultingAbi>
-    <SdkVersion>22</SdkVersion>
-  </Device>
-  <Device id="emulator-5554">
-    <ResultingAbi>x86</ResultingAbi>
-    <SdkVersion>27</SdkVersion>
-  </Device>
-  <Device id="53e3cab1">
-    <ResultingAbi></ResultingAbi>
-    <SdkVersion>27</SdkVersion>
-  </Device>
-  <Device id="RF8M221A6PJ">
-    <ResultingAbi>arm64-v8a</ResultingAbi>
-    <SdkVersion>28</SdkVersion>
+    <SdkVersion>24</SdkVersion>
   </Device>
 </Devices>

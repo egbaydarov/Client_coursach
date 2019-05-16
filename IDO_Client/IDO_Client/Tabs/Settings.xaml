@@ -2,8 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDO_Client.Tabs.Settings"
-             xmlns:renderers="clr-namespace:ConferenceVision.Views.Renderers"
-             
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.BackButtonTitle="">

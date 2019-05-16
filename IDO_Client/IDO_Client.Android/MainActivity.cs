@@ -9,12 +9,13 @@ using Android.OS;
 using Plugin.CurrentActivity;
 using ImageCircle.Forms.Plugin.Droid;
 using FFImageLoading;
+using Android.Content;
 
 namespace IDO_Client.Droid
 {
 
 
-    [Activity(Label = "MOYOGOVNO", Theme = "@style/Theme.Splash", Icon = "@drawable/startpageimage", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, LaunchMode = LaunchMode.SingleTop)]
+    [Activity(Label = "PeCardo", Theme = "@style/Theme.Splash", Icon = "@drawable/startpageimage", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, LaunchMode = LaunchMode.SingleTop)]
     //[Activity(Label = "IDO_Client", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -39,6 +40,21 @@ namespace IDO_Client.Droid
             LoadApplication(new App());
 
 
+        }
+        public override void OnTrimMemory([GeneratedEnum] TrimMemory level)
+        {
+            FFImageLoading.ImageService.Instance.InvalidateMemoryCache();
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
+            base.OnTrimMemory(level);
+        }
+
+        public override void OnLowMemory()
+        {
+            FFImageLoading.ImageService.Instance.InvalidateMemoryCache();
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
+            base.OnLowMemory();
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

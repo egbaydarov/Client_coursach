@@ -338,3 +338,7 @@ C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Andr
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Release\81\res\drawable\gallery.png
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Release\81\res\drawable\deleteone.png
 C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Release\81\res\drawable\about.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Release\81\res\drawable\goaldone.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Release\81\res\drawable\goalundone.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Release\81\res\drawable\ididplaceholder.png
+C:\Users\maste\Documents\SHARAGA\Solutions\IDO_Client\IDO_Client\IDO_Client.Android\obj\Release\81\res\drawable\quickstarta.gif

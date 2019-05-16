@@ -13,15 +13,13 @@ using Xamarin.Forms;
 
 namespace IDO_Client
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
     public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
             InitializeComponent();
-            var navigationFollowsPage = new NavigationPage(new Follows(App.Profile.Nickname));
+            var navigationFollowsPage = new NavigationPage(new Follows(App.Profile.Nickname, true));
             navigationFollowsPage.Icon = "follows.png";
             navigationFollowsPage.Title = "Follows";
             navigationFollowsPage.BarBackgroundColor = Color.White;
@@ -46,7 +44,8 @@ namespace IDO_Client
             this.Children.Add(new Idid());
             this.Children.Add(navigationHomePage);
             this.Children.Add(NavigationSettingsPAge);
-            
+
+
         }
     }
 }

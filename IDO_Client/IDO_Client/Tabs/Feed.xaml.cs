@@ -1,7 +1,6 @@
 ﻿using FFImageLoading.Forms;
 using IDO_Client.Controls;
 using IDO_Client.Models;
-using IDO_Client.Models.Responses;
 using ImageCircle.Forms.Plugin.Abstractions;
 using Newtonsoft.Json;
 using System;
@@ -10,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace IDO_Client.Tabs
@@ -38,60 +38,12 @@ namespace IDO_Client.Tabs
                 return new List<Note>();
             }
         }
-        
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            var Data = new ObservableCollection<Data>();
-            var notes = new List<Note>();
-            if (isFeedPage)
-            {
-                foreach (var nick in App.Profile.Follows)
-                    notes.AddRange(await GetUserNotes(nick));
-                if (notes.Count == 0)
-                {
-                    EmptyLabel.Text = "This might be intresting . . .";
-                    EmptyLabel.IsVisible = true;
-                    notes.AddRange(await GetRecommendNotes());
-                }
-                else
-                {
-                    EmptyLabel.IsVisible = false;
-                }
-                
-            }
-            else
-            {
-                notes.AddRange(await GetUserNotes(nickname));
-                if (notes.Count == 0)
-                {
-                    EmptyLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
-                    EmptyLabel.Text = "Have no achievements there . . .";
-                    EmptyLabel.IsVisible = true;
-                }
-                else
-                {
-                    EmptyLabel.IsVisible = false;
-                }
-            }
-            FeedView.ItemsSource = Data;
-            if (InterestingViewMode)
-                notes.Sort((a, b) => -a.LukasCount.CompareTo(b.LukasCount));
-            else
-                notes.Sort((a, b) => -a.ImageReference.CompareTo(b.ImageReference));
-            foreach (var i in notes)
-                    Data.Add(await CreateDataModelFromNote(i, i.Nickname));
-            
-
-        }
         public Feed(string nick, bool isfeedpage = false)
         {
             isFeedPage = isfeedpage;
             nickname = nick;
             InitializeComponent();
-            
-            //FeedView = _listView;
-
+            Refresh();
         }
         public async Task<List<Note>> GetUserNotes(string nickname)
         {
@@ -124,7 +76,7 @@ namespace IDO_Client.Tabs
                 using (HttpClient client = new HttpClient())
                 {
                     string avName = (await Follows.GetUserData(nickname)).Avatar;
-                    string avRef = avName != null ? $"{App.server}/{nickname}/{avName}/download": "defaultavatar.png";
+                    string avRef = avName != null ? $"{App.server}/{nickname}/{avName}/download" : "defaultavatar.png";
                     var data = new Data()
                     {
                         Description = note.Description,
@@ -136,9 +88,9 @@ namespace IDO_Client.Tabs
                         AvatarReference = avRef,
                         ExImages = new List<string>()
                     };
-                    if(note.ExImages != null)
-                    foreach (var i in note.ExImages)
-                        data.ExImages.Add($"{App.server}/{nickname}/{i}/download");
+                    if (note.ExImages != null)
+                        foreach (var i in note.ExImages)
+                            data.ExImages.Add($"{App.server}/{nickname}/{i}/download");
                     return data;
                 }
             }
@@ -152,7 +104,7 @@ namespace IDO_Client.Tabs
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null) return;
-            if (sender is ListView lv) lv.SelectedItem = null;
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
 
         private async void FeedView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
@@ -165,6 +117,64 @@ namespace IDO_Client.Tabs
             //    var note = await GetSingleNote();
             //    data.Add(await CreateDataModelFromNote(note, note.nickname));
             //}
+        }
+        async void Refresh()
+        {
+            try
+            {
+                var Data = new ObservableCollection<Data>();
+                var notes = new List<Note>();
+                if (isFeedPage)
+                {
+                    foreach (var nick in App.Profile.Follows)
+                        notes.AddRange(await GetUserNotes(nick));
+                    if (notes.Count == 0)
+                    {
+                        EmptyLabel.Text = "This might be intresting . . .";
+                        EmptyLabel.IsVisible = true;
+                        notes.AddRange(await GetRecommendNotes());
+                    }
+                    else
+                    {
+                        EmptyLabel.IsVisible = false;
+                    }
+
+                }
+                else
+                {
+                    notes.AddRange(await GetUserNotes(nickname));
+                    if (notes.Count == 0)
+                    {
+                        EmptyLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+                        EmptyLabel.Text = "Have no achievements there . . .";
+                        EmptyLabel.IsVisible = true;
+                    }
+                    else
+                    {
+                        EmptyLabel.IsVisible = false;
+                    }
+                }
+                FeedView.ItemsSource = Data;
+                if (InterestingViewMode)
+                    notes.Sort((a, b) => -a.LukasCount.CompareTo(b.LukasCount));
+                else
+                    notes.Sort((a, b) => -a.ImageReference.CompareTo(b.ImageReference));
+                foreach (var i in notes)
+                    Data.Add(await CreateDataModelFromNote(i, i.Nickname));
+
+                FeedView.IsRefreshing = false;
+            }
+            catch (Exception e)
+            {
+
+                FeedView.IsRefreshing = false;
+            }
+
+        }
+
+        private void OnRefresh(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }

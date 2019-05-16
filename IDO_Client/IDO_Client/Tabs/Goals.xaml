@@ -2,38 +2,39 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="IDO_Client.Tabs.Goals"
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="EmptyLabel" TextColor="Black" Margin="0,10,0,0" IsVisible="False" FontSize="Large" HorizontalOptions="Center" FontFamily="Rubik-Bold.ttf#Rubik-Bold"/>
-            <ListView x:Name="GoalsView" ItemTapped="OnItemTapped" HasUnevenRows="True">
+            <ListView x:Name="GoalsView" ItemTapped="OnItemTapped" HasUnevenRows="True" >
                 <ListView.ItemTemplate >
 
                     <DataTemplate >
 
-                        <ViewCell>
+                        <ViewCell >
                             <Frame HasShadow="True" Margin="6" AnchorX="{Binding COST}" CornerRadius="25">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnGoalTapped" NumberOfTapsRequired="1"/>
                                 </Frame.GestureRecognizers>
                                 <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition  Height= "auto"/>
-                                            <RowDefinition  Height= "auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Nickname}"  x:Name="nickname" 
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height= "auto"/>
+                                        <RowDefinition  Height= "auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Nickname}"  x:Name="nickname" 
                                                FontFamily="Rubik-Bold.ttf#Rubik-Bold"
                                                TextColor="Black" 
                                                Margin="15,7,0,0" 
                                                FontSize="Large"
                                                VerticalOptions="StartAndExpand">
-                                        </Label>
-                                        <Label Text="{Binding Description, StringFormat='Goal: {0}'}" 
+                                    </Label>
+                                    <Label Text="{Binding Description, StringFormat='Goal: {0}'}" 
                                                FontFamily="Rubik-Regular.ttf#Rubik-Regular"
                                                FontAttributes="Bold"
                                                Margin="30,3,0,0"
@@ -41,9 +42,18 @@
                                                FontSize="Small"
                                                TextColor="Black"
                                                VerticalOptions="StartAndExpand">
-                                        </Label>
-                                    
-                                    <Label Text="{Binding isReached}" Grid.Column="1" HorizontalOptions="EndAndExpand" Grid.RowSpan="2" Margin="20,0,7,0" VerticalOptions="CenterAndExpand" FontSize="Medium"/>
+                                    </Label>
+                                    <abstractions:CircleImage x:Name="ProgressImage" Grid.Column="1" HorizontalOptions="EndAndExpand" Grid.RowSpan="2" Margin="20,0,7,0" VerticalOptions="CenterAndExpand" HeightRequest="50">
+                                        <abstractions:CircleImage.Triggers>
+                                            <DataTrigger Binding="{Binding isReached}" TargetType="abstractions:CircleImage" Value="False">
+                                                <Setter Property="Source"  Value="goalUndone.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding isReached}"  TargetType="abstractions:CircleImage" Value="True">
+                                                <Setter Property="Source" Value="goalDone.png" />
+                                            </DataTrigger>
+                                        </abstractions:CircleImage.Triggers>
+                                    </abstractions:CircleImage>
+                                    <!--<Label Text="{Binding isReached}" Grid.Column="1" HorizontalOptions="EndAndExpand" Grid.RowSpan="2" Margin="20,0,7,0" VerticalOptions="CenterAndExpand" FontSize="Medium"/>-->
 
                                 </Grid>
                             </Frame>

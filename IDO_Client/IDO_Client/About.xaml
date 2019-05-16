@@ -13,12 +13,7 @@
                 </ScrollView>
             </Frame>
             <Button Style="{StaticResource blackborderbutton}" Clicked="ReportBug" Text="Report Bug" Margin="30,0,30,48" VerticalOptions="End"/>
-            <Label Text="This Application is Egor's Baydarov Course Work, HSE Moskow Student."
-                   FontFamily="Rubik-Bold.ttf#Rubik-Bold"
-                   FontSize="Micro" 
-                   Margin="2,0,2,0"
-                   VerticalOptions="EndAndExpand"/>
-            <Label Text="All Rights Reserved."
+            <Label Text="This Application is Egor's Baydarov Course Work, HSE Mosсow Student."
                    FontFamily="Rubik-Bold.ttf#Rubik-Bold"
                    FontSize="Micro" Margin=" 5,0,5,57"
                    VerticalOptions="EndAndExpand"
