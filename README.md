@@ -5,5 +5,5 @@ Achievement Sharing Social-Networking Servive Powered by Xamarin
 
 [Amazon App Store](https://www.amazon.com/dp/B07QYL71FW/ref=apps_sf_sta)
 
-[APK download](https://github.com/egbaydarov/Client_coursach/blob/master/IDO_Client/IDO_Client.Android/bin/Debug/com.voradyab.idoclient.apk)
+[APK download](https://github.com/egbaydarov/Client_coursach/raw/master/IDO_Client/IDO_Client.Android/bin/Debug/com.voradyab.idoclient.apk)
 
